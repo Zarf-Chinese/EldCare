@@ -1,0 +1,5 @@
+Class,Property,PropType
+FamMember,id,int
+FamMember,name,string
+FamMember,elder_id_list,string
+Elder,id,int
