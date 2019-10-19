@@ -3,6 +3,7 @@
  */
 public class Nurse {
     /** 护工id */
+	//设置自增主键
     private int id;
     /** 护工姓名 */
     private String name;

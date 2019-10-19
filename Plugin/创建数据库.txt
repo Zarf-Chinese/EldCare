@@ -1,0 +1,112 @@
+/*以下是所有DOS窗口操作，由PowerDesigner生成，上面的.pdm是其工作表文件*/
+
+
+create database eld_care;
+/*更改数据库字符集设定以匹配中文*/
+alter database eld_care character set gbk;
+
+use eld_care;
+/*查看字符集编码*/
+show variables like '%char%';
+
+/*建表---老人*/
+drop table if exists t_elder;
+
+/*==============================================================*/
+/* Table: t_elder                                               */
+/*==============================================================*/
+create table t_elder
+(
+   id                   int not null auto_increment,
+   name                 varchar(255),
+   nur_home_id          varchar(255),
+   birthday_time        varchar(255),
+   state                varchar(255),
+   primary key (id)
+);
+
+/*添加测试数据*/
+insert into t_elder(name,state)values('张三','需要轮椅');
+/*查看测试结果*/
+select * from t_elder;
+
+
+
+/***********************************************************************************************************/
+/*建表---老人家属*/
+
+drop table if exists t_fam_member;
+
+/*==============================================================*/
+/* Table: t_fam_member                                          */
+/*==============================================================*/
+create table t_fam_member
+(
+   id                   int not null,
+   name                 varchar(255),
+   elder_id_list        varchar(255),
+   primary key (id)
+);
+/*添加外键约束：添加的家属必须对应老人*/
+alter table t_fam_member add constraint FK_fam_conn_eld foreign key (id)
+      references t_elder (id) on delete restrict on update restrict;
+
+
+/*添加测试数据*/
+insert into t_fam_member(id,name,elder_id_list)values(1,'张三的儿子','11');
+/*查看测试结果*/
+select * from t_fam_member;
+
+
+/***********************************************************************************************************/
+/*建表---院方*/
+drop table if exists t_nur_home;
+
+/*==============================================================*/
+/* Table: t_nur_home                                            */
+/*==============================================================*/
+create table t_nur_home
+(
+   id                   int not null,
+   name                 varchar(255),
+   mail_path            varchar(255),
+   tel_number           varchar(255),
+   primary key (id)
+);
+
+
+/***********************************************************************************************************/
+/*建表---护工*/
+drop table if exists t_nurse;
+
+/*==============================================================*/
+/* Table: t_nurse                                               */
+/*==============================================================*/
+create table t_nurse
+(
+   id                   int not null auto_increment,
+   name                 varchar(255),
+   elder_id_list        varchar(255),
+   tel_number           varchar(255),
+   primary key (id)
+);
+
+/***********************************************************************************************************/
+/*建表---用户*/
+drop table if exists t_user;
+
+/*==============================================================*/
+/* Table: t_user                                                */
+/*==============================================================*/
+create table t_user
+(
+   id                   varchar(255) not null,
+   password             varchar(255),
+   identity_id          varchar(255),
+   type                 int,
+   primary key (id)
+);
+
+
+
+

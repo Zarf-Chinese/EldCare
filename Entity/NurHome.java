@@ -1,6 +1,7 @@
 /**
  * 院方
  */
+ /*这个“院方”是什么意思？多个养老院共同管理？*/
 public class NurHome {
     /** 院方id */
     private int id;

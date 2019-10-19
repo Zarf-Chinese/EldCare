@@ -4,6 +4,7 @@
 @AAA
 public class FamMember {
     /** 家人id */
+	//主键，与t_elder的id字段形成外键约束：添加的家属必须对应老人
     private int id;
     /** 家人姓名 */
     private String name;
