@@ -95,6 +95,7 @@
 							</div>
 					  </li>
 					</ul>
+					
 				</div>
 			</div>
 			<div class="row">
@@ -111,7 +112,8 @@
 					</div>
 					<ul>
 						<li class="list-item">
-							账号名
+							账号名 
+						      <label>Text Area</label>
 						</li>
 						<li class="list-item">
 							姓名
@@ -131,7 +133,20 @@
 						
 						
 		
-	</ul> </div>
+	</ul> 
+				  <form role="form" action="changeProfile.do" >
+				<div class="form-group">
+				  <label for="exampleInputEmail1">用户名 &nbsp; &nbsp; </label>
+				  <input type="email" class="form-control" id="exampleInputEmail1" name="uid">
+				</div>
+				<div class="form-group">
+				  <label for="exampleInputPassword1">密码</label>
+				  <input type="password" class="form-control" id="exampleInputPassword1" name="upwd">
+				</div>
+
+					  <button type="submit" class="btn btn-primary btn-block btn-warning"> 登录</button>
+			</form>
+			  </div>
 	</div>
 </div>
 </div>
