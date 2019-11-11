@@ -42,6 +42,7 @@ public class DBUtil {
     public static boolean executeUpdate(String sql, Object[] obj) {
         try {
             ps = createPS(sql, obj);
+            //返回的数据行数：
             int count = ps.executeUpdate();
             //成功true
             if (count > 0) {

@@ -1,10 +1,8 @@
 package entity; /**
  * 用户
  */
- /**这个用户有什么作用？
-我认为如果是初始页，给一个选项直接跳转到此角色的注册页（构造方法）就好了
-可以开启用于关注院方/政府检查的账户，后期通过给院方提交申请-开启浏览数据库的权限
-此时不需要identiy_id属性
+ /**
+  * 增加了注册的构造方法
 */
 public class User {
     /** 用户注册登录用的id */
@@ -18,7 +16,23 @@ public class User {
      */
     private int type;
 
-    public String getId() {
+    //构造方法：
+     public User() {
+     }
+
+     public User(String id, String password) {
+         this.id = id;
+         this.password = password;
+     }
+
+     public User(String id, String password, String identity_id, int type) {
+         this.id = id;
+         this.password = password;
+         this.identity_id = identity_id;
+         this.type = type;
+     }
+
+     public String getId() {
         return id;
     }
 
