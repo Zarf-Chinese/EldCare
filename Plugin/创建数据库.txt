@@ -107,6 +107,24 @@ create table t_user
    primary key (id)
 );
 
+/*建表---护工评价表*/
+drop table if exists t_NurComment;
+
+/*==============================================================*/
+/* Table: t_NurComment                                          */
+/*==============================================================*/
+create table t_NurComment
+(
+   id                   int not null,
+   fam_id               int,
+   context              varchar(255),
+   time                 varchar(255),
+   primary key ()
+);
+
+alter table t_NurComment add constraint FK_Reference_2 foreign key (id)
+      references t_nurse (id) on delete restrict on update restrict;
+
 
 
 

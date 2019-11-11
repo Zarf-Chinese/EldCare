@@ -4,13 +4,12 @@ import java.sql.Date;
 
 /**
  * 护工评价
+ * 此表中的护工id和nurse表进行外键连接
  */
 public class NurComment {
+
     /** 护工id */
-    // 设置自增主键
     private int id;
-    /** 护工id */
-    private int targetNurId;
     /** 评价家属id */
     private int famId;
     /**
@@ -20,20 +19,13 @@ public class NurComment {
     /** 评价触发的服务器时间 */
     private Date time;
 
-    public int getId() {
+
+    public int getnurId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getTargetNurId() {
-        return targetNurId;
-    }
-
-    public void setTargetNurId(int targetNurId) {
-        this.targetNurId = targetNurId;
+    public void setnurId(int targetNurId) {
+        this.id = targetNurId;
     }
 
     public int getFamId() {
