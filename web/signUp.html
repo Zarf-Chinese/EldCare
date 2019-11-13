@@ -1,60 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap 4, from LayoutIt!</title>
 
-  <title>Bootstrap 4, from LayoutIt!</title>
+        <meta
+            name="description"
+            content="Source code generated using layoutit.com"
+        />
+        <meta name="author" content="LayoutIt!" />
 
-  <meta name="description" content="Source code generated using layoutit.com">
-  <meta name="author" content="LayoutIt!">
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <blockquote>
+                        <h3 class="text-warning text-center">
+                            <header>&nbsp;</header>
+                            <header>&nbsp;</header>
+                            <header>&nbsp;</header>
+                            <strong>欢迎您注册EldCare！</strong>
+                        </h3>
+                    </blockquote>
+                    <form role="form" action="signUp.do" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"
+                                >用户名 &nbsp; &nbsp;
+                            </label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                name="uid"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword5">密码</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword3"
+                                name="upwd"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword7">确认密码</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword"
+                            />
+                        </div>
 
-</head>
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-block btn-warning"
+                        >
+                            注册
+                        </button>
+                        <!--submit按钮要放在表单内，否则无法提交信息-->
+                    </form>
+                    <button
+                        type="button"
+                        class="btn disabled btn-sm btn-link text-md-center"
+                    ></button>
+                </div>
+            </div>
+        </div>
 
-<body>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-4">
-        <blockquote>
-          <h3 class="text-warning text-center">
-            <header>&nbsp;</header>
-            <header>&nbsp;</header>
-            <header>&nbsp;</header>
-            <strong>欢迎您注册EldCare！</strong>
-          </h3>
-        </blockquote>
-        <form role="form" action="signUp.do" method="post">
-          <div class="form-group">
-            <label for="exampleInputEmail1">用户名 &nbsp; &nbsp; </label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="uid">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword5">密码</label>
-            <input type="password" class="form-control" id="exampleInputPassword3" name="upwd">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword7">确认密码</label>
-            <input type="password" class="form-control" id="exampleInputPassword">
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-block btn-warning"> 注册</button>
-          <!--submit按钮要放在表单内，否则无法提交信息-->
-        </form><button type="button" class="btn disabled btn-sm btn-link text-md-center"></button>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/scripts.js"></script>
-</body>
-
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
