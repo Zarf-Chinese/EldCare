@@ -5,6 +5,7 @@ import service.EldServiceImpl;
 import service.IEldService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import java.util.List;
  * Author:ShiQi
  * Date:2019/10/23-19:15
  */
+@WebServlet("/eldQueAll.do")
 public class eldQueAllServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
