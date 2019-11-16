@@ -33,12 +33,14 @@ public class userSignUpServlet extends HttpServlet {
         boolean result = ss.addUser(u);
 
         if (result) {
-            response.getWriter().write("新用户注册成功");
+            response.getWriter().write("新用户注册成功，3秒后跳转至登录页");
+        //跳转至其他页面
+            response.setHeader("refresh","3;/EldCare/login.html");
         }else{
             response.getWriter().write("注册失败，此用户名已经存在");
         }
 
-        //跳转至其他页面
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
