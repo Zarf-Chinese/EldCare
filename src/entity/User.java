@@ -1,38 +1,39 @@
 package entity; /**
- * 用户
+                * 用户
+                */
+
+/**
+ * 增加了注册的构造方法
  */
- /**
-  * 增加了注册的构造方法
-*/
 public class User {
     /** 用户注册登录用的id */
     private String id;
     /** 用户注册登录用的密码 */
     private String password;
     /** 用户关联的身份的id */
-    private String identity_id;
+    private String identityId;
     /**
      * 用户身份类型。1:老人；2:家属；3:院方；4:护工
      */
     private int type;
 
-    //构造方法：
-     public User() {
-     }
+    // 构造方法：
+    public User() {
+    }
 
-     public User(String id, String password) {
-         this.id = id;
-         this.password = password;
-     }
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
 
-     public User(String id, String password, String identity_id, int type) {
-         this.id = id;
-         this.password = password;
-         this.identity_id = identity_id;
-         this.type = type;
-     }
+    public User(String id, String password, String identity_id, int type) {
+        this.id = id;
+        this.password = password;
+        this.identityId = identity_id;
+        this.type = type;
+    }
 
-     public String getId() {
+    public String getId() {
         return id;
     }
 
@@ -48,12 +49,12 @@ public class User {
         this.password = password;
     }
 
-    public String getIdentity_id() {
-        return identity_id;
+    public String getIdentityId() {
+        return identityId;
     }
 
-    public void setIdentity_id(String identity_id) {
-        this.identity_id = identity_id;
+    public void setIdentityId(String identity_id) {
+        this.identityId = identity_id;
     }
 
     public int getType() {

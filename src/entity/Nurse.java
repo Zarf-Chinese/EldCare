@@ -5,18 +5,18 @@ package entity;
  */
 public class Nurse {
     /** 护工id */
-	//设置自增主键
+    // 设置自增主键
     private int id;
     /** 护工姓名 */
     private String name;
     /** 所在养老院id */
-    private int nur_home_id;
+    private int nurHomeId;
     /**
      * 所有负责的老人id，以 ',' 间隔。如 "123,245,555"
      */
-    private String elder_id_list;
+    private String elderIdList;
     /** 护工工作时的联系方式 */
-    private String tele_number;
+    private String teleNumber;
 
     public int getId() {
         return id;
@@ -34,27 +34,28 @@ public class Nurse {
         this.name = name;
     }
 
-    public int getNur_home_id() {
-        return nur_home_id;
+    public int getNurHomeId() {
+        return nurHomeId;
     }
 
-    public void setNur_home_id(int nur_home_id) {
-        this.nur_home_id = nur_home_id;
+    public void setNurHomeId(int nurHomeId) {
+        this.nurHomeId = nurHomeId;
     }
 
-    public String getElder_id_list() {
-        return elder_id_list;
+    public String getElderIdList() {
+        return elderIdList;
     }
 
-    public void setElder_id_list(String elder_id_list) {
-        this.elder_id_list = elder_id_list;
+    public void setElderIdList(String elderIdList) {
+        this.elderIdList = elderIdList;
     }
 
-    public String getTele_number() {
-        return tele_number;
+    public String getTeleNumber() {
+        return teleNumber;
     }
 
-    public void setTele_number(String tele_number) {
-        this.tele_number = tele_number;
+    public void setTeleNumber(String teleNumber) {
+        this.teleNumber = teleNumber;
     }
+
 }

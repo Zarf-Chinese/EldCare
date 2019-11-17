@@ -1,11 +1,12 @@
 package entity;
+
 /**
  * 老人
  */
- /*需要功能：根据老人id查找所属护工，是不是应该添加一个nurseId属性？*/
+/* 需要功能：根据老人id查找所属护工，是不是应该添加一个nurseId属性？ */
 public class Elder {
     /** 老人Id */
-	//设置自增主键，反馈给家属的信息表需包含主键，家属依靠老人id注册家属信息
+    // 设置自增主键，反馈给家属的信息表需包含主键，家属依靠老人id注册家属信息
     private int id;
     /** 老人姓名 */
     private String name;
@@ -14,14 +15,13 @@ public class Elder {
     /**
      * 出生日期。格式： yyyy-mm-dd。如 "1917-09-08"
      */
-    private String birthday_time;
+    private String birthdayTime;
     /**
      * 老人状况
      */
     private String state;
 
-   //构造方法：
-
+    // 构造方法：
 
     public Elder() {
     }
@@ -30,7 +30,7 @@ public class Elder {
         this.id = id;
         this.name = name;
         this.nurHomeId = nurHomeId;
-        this.birthday_time = birthday_time;
+        this.birthdayTime = birthday_time;
         this.state = state;
     }
 
@@ -58,12 +58,12 @@ public class Elder {
         this.nurHomeId = nurHomeId;
     }
 
-    public String getBirthday_time() {
-        return birthday_time;
+    public String getBirthdayTime() {
+        return birthdayTime;
     }
 
-    public void setBirthday_time(String birthday_time) {
-        this.birthday_time = birthday_time;
+    public void setBirthdayTime(String birthday_time) {
+        this.birthdayTime = birthday_time;
     }
 
     public String getState() {
