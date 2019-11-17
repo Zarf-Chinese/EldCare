@@ -6,3 +6,11 @@ signup.html:
 comment.html:
   新数据库类型 NurComment     已完成
   连接该数据库            请前端标注comment.html中需要存储到数据库内容的文本框；没有form表单目前无法提交数据给后台，请修改comment.html代码
+
+FamilyComment.html:
+  前传后的后端实现
+  文字居中，确定前端框架
+
+FamilyPublicComment.html:
+  jsp化
+  后传前的前端、后端实现
