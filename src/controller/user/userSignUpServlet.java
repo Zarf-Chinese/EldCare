@@ -20,6 +20,7 @@ import java.io.PrintWriter;
 public class userSignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //处理请求编码
+        request.setCharacterEncoding("utf-8");
         //设置响应编码
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

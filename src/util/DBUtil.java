@@ -27,13 +27,16 @@ public class DBUtil {
         Class.forName("com.mysql.cj.jdbc.Driver");
         //将访问数据库的连接修改为指向数据源
 //        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        try {
+     /*  远程主机测试失败，优化数据库暂缓
+      try {
             Context ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/eldCare");
             return ds.getConnection();
         } catch (NamingException e) {
             e.printStackTrace();
         }
+
+      */
         //以上DBUtil还需要修改，故这里简单在最后一行加上return
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }

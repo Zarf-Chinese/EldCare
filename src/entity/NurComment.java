@@ -9,23 +9,46 @@ import java.sql.Date;
 public class NurComment {
 
     /** 护工id */
-    private int id;
+    private int nurId;
     /** 评价家属id */
     private int famId;
     /**
      * 评价内容
      */
     private String content;
-    /** 评价触发的服务器时间 */
+    /** 评价触发的服务器时间
+     * 数据库中类型：datetime
+     * 格式：yyyy-MM-dd HH:mm:ss
+     * */
     private Date time;
 
-
-    public int getnurId() {
-        return id;
+    //构造方法：
+    public NurComment() {
     }
 
-    public void setnurId(int targetNurId) {
-        this.id = targetNurId;
+    public NurComment(int nurId, int famId, String content) {
+        this.nurId = nurId;
+        this.famId = famId;
+        this.content = content;
+    }
+    //toString:
+
+
+    @Override
+    public String toString() {
+        return "评价详情：【" +
+                "护工ID：" + nurId +
+                "，用户ID：" + famId +
+                "，评价内容：" + content +
+                "】";
+    }
+
+    public int getNurId() {
+        return nurId;
+    }
+
+    public void setNurId(int nurId) {
+        this.nurId = nurId;
     }
 
     public int getFamId() {
