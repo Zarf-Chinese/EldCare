@@ -1,0 +1,61 @@
+<!doctype html>
+<!--以下是注册界面-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢迎注册EldCare!</title>
+<link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="page" data-theme="e">
+  <div data-role="content">
+  	<div >
+  	  <h2> <strong>欢迎您注册EldCare！</strong></h2>
+  	  <form role="form" action="signUp.do" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"
+                                >用户名 &nbsp; &nbsp;
+                            </label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                name="uid"
+                            />
+                        </div>
+                        <h5></h5>
+                        <div class="form-group">
+                            <label for="exampleInputPassword5">密码</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword3"
+                                name="upwd"
+                            />
+                        </div>
+                        <h5></h5>
+                        <div class="form-group">
+                            <label for="exampleInputPassword7">确认密码</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword"
+                            />
+                        </div>
+                        <h5></h5><h5></h5>
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-block btn-warning"
+                        >
+                            注册
+                        </button>
+                        <!--submit按钮要放在表单内，否则无法提交信息-->
+                    </form>
+                </div>
+  </div>
+</div>
+</body>
+</html>
