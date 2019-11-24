@@ -13,4 +13,17 @@ FamilyComment.html:
 
 FamilyPublicComment.html:
   jsp化
-  后传前的前端、后端实现
+  
+Attention:
+  后传前的前端、后端实现前传后数据 放在form里面（login示例）
+  
+SlideMenu.html:
+
+Moban:
+  个人资料都加入一个身份&绑定身份 ——模板制作 LYL
+  
+Info:
+  养老院信息mobile界面（一个侧栏一个大功能一个文件 看看好不好用如何页面跳转）
+  
+Data:
+  后传前数据 记得写id 注释写清楚
