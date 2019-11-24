@@ -13,6 +13,19 @@ FamilyComment.html:
 
 FamilyPublicComment.html:
   jsp化
+  后传前的前端、后端实现
+
+页面重构:
+  注意事项:
+    使用2:1的比例来制作网页
+  Home:
+    主界面
+  Menu:
+    菜单界面
+  Search:
+    查询界面（见参考界面）
+  Login: 登录，并准备
+  Sign: 注册
   
 Attention:
   后传前的前端、后端实现前传后数据 放在form里面（login示例）

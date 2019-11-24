@@ -11,7 +11,7 @@ public class User {
     /** 用户注册登录用的密码 */
     private String password;
     /** 用户关联的身份的id */
-    private String identityId;
+    private int identityId;
     /**
      * 用户身份类型。1:老人；2:家属；3:院方；4:护工
      */
@@ -26,7 +26,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String id, String password, String identity_id, int type) {
+    public User(String id, String password, int identity_id, int type) {
         this.id = id;
         this.password = password;
         this.identityId = identity_id;
@@ -49,11 +49,11 @@ public class User {
         this.password = password;
     }
 
-    public String getIdentityId() {
+    public int getIdentityId() {
         return identityId;
     }
 
-    public void setIdentityId(String identity_id) {
+    public void setIdentityId(int identity_id) {
         this.identityId = identity_id;
     }
 
