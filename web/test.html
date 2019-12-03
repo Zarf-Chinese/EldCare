@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传照片测试页</title>
+</head>
+<body>
+<form action="nurseUpdate.do" method="post" enctype="multipart/form-data">
+    type不写，默认text<br>
+    以下测试限制图片大小100kb内，后缀名仅支持jpg/png<br>
+    护工id：(目前库里只有id为1的护工）<input name="id"/><br>
+    上传照片：<input type="file" name="photo"/><br>
+    <input type="submit" value="更新"/><br>
+    注意事项：<br>------------------
+    1、表单提交方式必须为post（地址栏放不下）；<br>
+    2、在表单中必须增加一个属性：entype="multipart/form-data"><br>
+</form>
+</body>
+</html>
