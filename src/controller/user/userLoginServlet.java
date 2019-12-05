@@ -36,14 +36,19 @@ public class userLoginServlet extends HttpServlet {
             User u=ss.queryUserById(id);
             //判断密码是否一致
             if(u.getPassword().equals(password)){
-                response.getWriter().write("登录成功，3秒后跳转到主页");
+           /*      response.getWriter().write("登录成功，3秒后跳转到主页");
         //跳转至其他页面
-                response.setHeader("refresh","3;/EldCare/home.html");
+               response.setHeader("refresh","3;home.html");*/
+//                response.sendRedirect("/EldCare/home.html");
+                response.setHeader("refresh","home.html");
+                System.out.println("success");
             }else{
                 response.getWriter().write("登录失败，密码错误");
+                System.out.println("登录失败，密码错误");
             }
         }else{
             response.getWriter().write("登录失败，此用户名不存在");
+            System.out.println("登录失败，此用户名不存在");
         }
 
 

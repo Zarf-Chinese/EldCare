@@ -1,11 +1,16 @@
 package util;
 
 
+import controller.nurse.nurseUpdateServlet;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Author:ShiQi
@@ -13,9 +18,43 @@ import java.sql.*;
  * 数据库操作方法
  */
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/eld_care?serverTimezone=GMT";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "147852";
+    // 连接数据库的路径
+    private static String URL;
+    // 连接数据库的用户名
+    private static String USERNAME;
+    // 连接数据库的密码
+    private static String PASSWORD;
+
+    private static String driver;
+
+    // 静态块
+    static {
+        try {
+            // 读取配置文件
+            Properties prop = new Properties();
+            /*
+             * 这种写法是将来更加推荐的相对路径 写法。
+             */
+            InputStream is = DBUtil.class.getClassLoader().getResourceAsStream(
+                    "config.properties");
+
+            prop.load(is);
+            is.close();
+            // 获取驱动
+            driver = prop.getProperty("driver");
+            // 获取地址
+            URL = prop.getProperty("URL");
+            // 获取用户名
+            USERNAME = prop.getProperty("USERNAME");
+            // 获取密码
+            PASSWORD = prop.getProperty("PASSWORD");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+//    private static final String URL = "jdbc:mysql://127.0.0.1:3306/eld_care?serverTimezone=GMT";
+//    private static final String USERNAME = "root";
+//    private static final String PASSWORD = "147852";
 
     //conn、ps两个对象两方法都有；且为方便查询时关闭conn变量，提出成静态变量：
     public static Connection conn = null;
@@ -24,7 +63,7 @@ public class DBUtil {
 
     //获取连接的数据库对象：
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName(driver);
         //将访问数据库的连接修改为指向数据源
 //        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
      /*  远程主机测试失败，优化数据库暂缓

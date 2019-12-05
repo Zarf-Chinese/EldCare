@@ -29,7 +29,8 @@ create table t_elder
 insert into t_elder(name,state)values('张三','需要轮椅');
 /*查看测试结果*/
 select * from t_elder;
-
+/*1202添加字段photo*/
+ alter table t_nurse add photo varchar(255) not null;
 
 
 /***********************************************************************************************************/
@@ -92,6 +93,11 @@ create table t_nurse
 );
 /*为测试familyComent.html提交评论的功能，添加此行测试数据：*/
  insert into t_nurse values(1,'优秀护工','2-5-8','11122223333');
+ /*添加字段*/
+ alter table t_nurse add photo varchar(255) not null;
+ alter table t_nurse add nur_home_id int not null;
+update t_nurse set photo='images/nursePhoto&1.jpg' where id=1;
+
 
 /***********************************************************************************************************/
 /*建表---用户*/
@@ -121,6 +127,7 @@ create table t_Nur_Comment
    fam_id               int,
    content              varchar(255),
    time                 timestamp not null default CURRENT_TIMESTAMP,
+   mark                 int,
    primary key (time)
 );
 

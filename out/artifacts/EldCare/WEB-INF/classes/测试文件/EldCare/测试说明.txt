@@ -1,0 +1,36 @@
+11.2 测试登录界面
+步骤：
+1、将EldCare文件夹拖至tomcat/webapps目录下
+
+2、创建数据库eld_care:
+create database eld_care;
+
+进入database：eld_care
+use eld_care;
+
+注意：默认用户名root，密码147852
+（修改LoginServlet数据库连接对象，需重新编译并替换EldCare\WEB-INF\classes\controller下的.class文件）
+
+建表：
+/*建表---用户*/
+drop table if exists t_user;
+
+/*==============================================================*/
+/* Table: t_user                                                */
+/*==============================================================*/
+create table t_user
+(
+   id                   varchar(255) not null,
+   password             varchar(255),
+   identity_id          varchar(255),
+   type                 int,
+   primary key (id)
+);
+
+添加测试数据：
+ insert into t_user(id,password)values('123@qq.com','bb');
+ 
+ 3、在dos窗口输入startup，开启tomcat
+ 打开任意浏览，访问   http://localhost:8080/EldCare/
+ 输入用户名和密码，点击登录按钮进行测试
+ （由于前段没有给出测试结果，这里简略写了结果页面loginInfo.jsp）

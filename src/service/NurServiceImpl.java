@@ -3,6 +3,9 @@ package service;
 import dao.INurDao;
 import dao.NurDaoImpl;
 import entity.NurComment;
+import entity.Nurse;
+
+import java.util.List;
 
 /**
  * Author:ShiQi
@@ -14,4 +17,8 @@ public class NurServiceImpl implements INurService {
     public boolean addCom(NurComment nurComment){
         return nurDao.addCom(nurComment);
     }
+    //护工更新信息
+    public boolean nurUpdate(Nurse nurse){return nurDao.nurUpdate(nurse);}
+    //查询护工评价信息
+    public List<NurComment> showCom(){return nurDao.showCom();}
 }

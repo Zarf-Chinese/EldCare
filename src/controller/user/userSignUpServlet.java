@@ -34,13 +34,18 @@ public class userSignUpServlet extends HttpServlet {
         boolean result = ss.addUser(u);
 
         if (result) {
-            response.getWriter().write("新用户注册成功，3秒后跳转至登录页");
-        //跳转至其他页面
-            response.setHeader("refresh","3;/EldCare/login.html");
-        }else{
-            response.getWriter().write("注册失败，此用户名已经存在");
-        }
+//           response.getWriter().write("新用户注册成功，3秒后跳转至登录页");
+//        //跳转至其他页面
+//            response.setHeader("refresh","3;/EldCare/login.html");
+            response.sendRedirect("login.html");
+            System.out.print("success");
+           // 如果成功弹出登陆成功并跳到下一个页面
+//            response.getWriter().write("<script  type='text/javascript'>alert('新用户注册成功!');window.location.href='login.html'</script>");
 
+        }else{
+//            response.getWriter().write("注册失败，此用户名已经存在");
+            response.getWriter().print("<script language = javascript>alert('注册失败，此用户名已存在');window.location.href='login.html'</script>");
+        }
 
     }
 

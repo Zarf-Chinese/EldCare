@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	
+<head>
+<meta charset="UTF-8">
+<title>menu</title>
+<link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="page1">
+	
+	<div data-role="panel" id="myPanel"> 
+     <img src="image/EldCare (2).png" width="30" height="30" alt="logo" align="center" />
+	 <h2>EldCare</h2>
+    <div data-role="collapsible-set">
+      <div data-role="collapsible">
+        <h3>工作资料</h3>
+        <a href="#page2" class="ui-btn">个人资料</a>
+		<a href="#page2" class="ui-btn">老人资料</a>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>个人事务</h3>
+        <a href="#page2" class="ui-btn">护工评价</a>
+		<a href="#page2" class="ui-btn">护工排行</a>
+		<a href="#page2" class="ui-btn">护工社群</a>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>老人事务</h3>
+        <a href="#page2" class="ui-btn">老人日常</a>
+		<a href="#page2" class="ui-btn">工作汇报</a>
+      </div>
+		
+		  <div data-role="collapsible" data-collapsed="true">
+			  <h3>视野</h3>
+        <a href="#page2" class="ui-btn">视野</a>
+      </div>
+    </div>
+    
+	</div> 
+	
+  <div data-role="header">
+	  
+  <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon " ></a>
+	  <h1>主页</h1>
+  </div>
+	
+	
+<div data-role="content">
+	<!--以下为后端传前段-->
+	<ul>
+							<li class="list-item">
+								账号<br>
+								<label>Text Area</label>
+								<br>
+							</li>
+							<li class="list-item">
+								身份<br>
+								<label>Text Area</label>
+								<br>
+							<a href="#" data-role="button" data-icon="plus">绑定新身份</a>
+							</li>
+							<li class="list-item">
+								姓名
+								<br><label>Text Area</label>
+								<br>
+							</li>
+							<li class="list-item">
+								性别
+								<br><label>Text Area</label>
+								<br>
+							</li>
+							<li class="list-item">
+								出生日期
+								<br><label>Text Area</label>
+								<br>
+							</li>
+							<li class="list-item">
+								籍贯
+								<br><label>Text Area</label>
+								<br>
+							</li>
+							<li class="list-item">
+								所属养老院
+								<br><label>Text Area</label>
+								<br>
+							</li>
+						</ul>
+	<!--以上-->
+  </div>
+	
+ 
+	
+  <div data-role="footer">
+    <h4>脚注</h4>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+1、Java命名规范：
+	类名、接口名：首字母大写，后面单词首字母大写。
+		例：public interface IEldDao
+				public class Elder 
+	变量名、方法名：首字母小写，后面每个单词首字母大写。
+		例：private String nurHomeId;
+				public List<Elder> queAllEld();
+	常量名：全部大写，单词之间下划线隔开。
+		例：private static final String URL
+
+2、项目结构：
+EldCare
+	-src-----------------------------后端代码
+		-controller---------------------控制器层，所有Servlet
+			-elder-----------------------关于Elder类的Servlet
+				eldQueAllServlet--------------一个方法（功能）对应一个Servlet
+				...------------其他方法的Servlet
+			...------------------其他属性的Servlet
+		-dao--------------------------数据库操作方法
+			IEldDao-------------------数据访问层接口
+			EldDaoImpl-------------------Elder类的数据访问操作
+			...
+		-entity-----------------------封装类（需要set()、get()、有参/无参的构造方法）
+			Elder
+			Nurse
+			...
+		-service-------------------------业务逻辑层（增删之前先判断是否存在等，组合调用d	ao层的方法）
+			IEldService---------------关于Elder类的方法
+			EldServiceImpl
+			...
+		-util
+			DBUtil---------------------通用的数据库增删改查工具
+	-web
+		-WEB-INF
+			-classes--------------------所有输出文件
+			-lib-------------------------jar包
+				mysql-jdbc驱动
+			web.xml-------------------设置Servlet的mapping属性对接前端的post/get/超链接
+		index.jsp------------------接收、传递给后端数据
+		...-------------------其他前端页面（表示层）
+	-Plugin----------------其他内容	

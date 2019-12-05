@@ -10,6 +10,12 @@ public class NurComment {
 
     /** 护工id */
     private int nurId;
+    //护工姓名
+    private String name;
+    public String getName() {
+        return name;
+    }
+
     /** 评价家属id */
     private int famId;
     /**
@@ -21,9 +27,25 @@ public class NurComment {
      * 格式：yyyy-MM-dd HH:mm:ss
      * */
     private Date time;
+    //评分
+    private int mark;
+
+    //照片（用于展示，不可修改）
+    private String nurPhoto;
+    public String getNurPhoto() {
+        return nurPhoto;
+    }
+
 
     //构造方法：
     public NurComment() {
+    }
+
+    public NurComment(int nurId,String name,String content,String nurPhoto) {//查询界面使用
+        this.nurId = nurId;
+        this.name=name;
+        this.content = content;
+        this.nurPhoto = nurPhoto;
     }
 
     public NurComment(int nurId, int famId, String content) {
@@ -32,9 +54,6 @@ public class NurComment {
         this.content = content;
     }
     //toString:
-
-
-    @Override
     public String toString() {
         return "评价详情：【" +
                 "护工ID：" + nurId +
@@ -73,5 +92,13 @@ public class NurComment {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
     }
 }

@@ -82,54 +82,28 @@
                     <h5>&nbsp;</h5>
                     <div class="media-object-default">
                         <!--								以下需要接收数据库数据-->
-
                         <%
                             //获取request域中的数据
                             List<NurComment> coms = (List<NurComment>) request.getAttribute("comment");
                             for (NurComment com : coms) {
-                                int id=com.getNurId();
-                                //查询照片信息：
-                                Nurse nur=null;
-                                PreparedStatement ps = null;
-                                ResultSet rs = null;
-                                Object[] obj = {
-                                        id
-                                };
-                                try {
-                                    String sql = "select photo from t_nurse where id=?";
-                                    rs = DBUtil.executeQuery(sql, obj);
-//            rs = ps.executeQuery();
-
-                                    if (rs.next()) {
-                                        String photo=rs.getString("photo");
-                                        nur.setNurPhoto(photo);
-                                    }
-                                    //删除ClassNoFoundException
-                                } catch (SQLException e) {
-                                    e.printStackTrace();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                } finally {
-                                    DBUtil.closeAll(rs, ps, DBUtil.conn);
-                                }
+                                String photo="images\\"+com.getNurPhoto();
                         %>
                         <div class="media"><img src="
-                                                    <% //照片信息
-                                                    nur.getNurPhoto();
-         %>"
-                                                        alt="placeholder image" width="250"
+<%--                                                        //照片信息--%>
+                                                    <%=photo%>
+                                                      "  alt="placeholder image" width="250"
                             class="d-flex mr-3">
                             <div class="media-body">
                                 <h5 class="mt-0">
-                                    <%
-                                        //id信息
-                                            nur.getId();
-                                    %>
-                                    号护工 李莉</h5>
-                                <%
-                                    //评价
-                                    com.getContent();
-                                    }
+<%--                                        //id信息--%>
+                                    <%=com.getNurId()%>
+                                    号护工
+<%--                                    姓名--%>
+                                    <%=com.getName()%>
+                                    </h5>
+<%--                                    //评价--%>
+                                <%=com.getContent()%>
+                                 <%   }
                                 %>
                             </div>
                         </div>

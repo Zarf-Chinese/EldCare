@@ -42,10 +42,10 @@ public class UserDaoImpl implements IUserDao{
 
             if (rs.next()) {
                 String password = rs.getString("password");
-                String identity_id = rs.getString("identity_id");
+                int identityId = rs.getInt("identity_id");
                 int type = rs.getInt("type");
 
-                u = new User(id,password,identity_id,type);
+                u = new User(id,password,identityId,type);
             }
             return u;
             //删除ClassNoFoundException
