@@ -1,24 +1,39 @@
 package com.eldcare.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
- * Author:ShiQi
- * Date:2020/3/12-10:47
+ * <p>
+ * 
+ * </p>
+ *
+ * @author zarf
+ * @since 2020-03-17
  */
 @Data
-public class User {
-    //用户名
-    private String id;
-    //密码
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_user")
+public class User implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
+    @TableField("PASSWORD")
     private String password;
-    //身份类型（1:护工；2:家属；3:院方）
+
+    @TableField("TYPE")
     private Integer type;
-    //注册时间
+
+    @TableField("GMT_CREATE")
     private Long gmtCreate;
-    //修改时间
+
+    @TableField("GMT_MODIFIED")
     private Long gmtModified;
 
-    public User() {
-    }
+
 }

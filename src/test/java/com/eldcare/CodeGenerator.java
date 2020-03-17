@@ -60,7 +60,8 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("com.eldcare");
+        pc.setParent("com");
+        pc.setModuleName("eldcare");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
