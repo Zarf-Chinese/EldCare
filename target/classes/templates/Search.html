@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>search</title>
+<link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+</head>
+
+<body>
+	
+<div data-role="page" id="page1" data-theme="d">
+	
+	<div data-role="header">
+	  
+  <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon " ></a>
+	  <h1>护工信息</h1>
+  </div>
+	
+<div data-role="content" >
+	
+<div class="ui-field-contain">
+    <label for="search-1" th:text="${SearchRequest.requestTitle}">搜索护工</label>
+    <input type="search" name="search-1" id="search-1" value="">
+</div>
+		
+ <div role="main" class="ui-content">
+	 
+        <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="arrow-r">
+            
+            <li>
+                <a href="#">
+                    <h3>护工1</h3>
+                    <p class="topic"><strong>李老林</strong></p>
+                    <p>工龄：</p>
+					<p>负责老人数：</p>
+					<p>评价：</p>
+                </a>                 
+				<a href="#" class="arrow-r">进入主页</a>
+			</li>
+			<li>
+                <a href="#">
+                    <h3>护工2</h3>
+                    <p class="topic"><strong>素老林</strong></p>
+                    <p>工龄：</p>
+					<p>负责老人数：</p>
+					<p>评价：</p>
+                </a>                 
+				<a href="#" class="arrow-r">进入主页</a>
+			</li>
+            <li>
+                <a href="#">
+                    <h3>护工1</h3>
+                    <p class="topic"><strong>张老林</strong></p>
+                    <p>工龄：</p>
+					<p>负责老人数：</p>
+					<p>评价：</p>
+                </a>                 
+				<a href="#" class="arrow-r">进入主页</a>
+			</li>
+			
+        </ul>
+	 
+ </div><!-- /content -->
+	
+</div>
+	
+</div>
+	
+</body>
+</html>

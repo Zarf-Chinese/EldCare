@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>search</title>
@@ -21,7 +21,7 @@
 <div data-role="content" >
 	
 <div class="ui-field-contain">
-    <label for="search-1">搜索护工</label>
+    <label for="search-1" th:text="${SearchRequest.requestTitle}">搜索护工</label>
     <input type="search" name="search-1" id="search-1" value="">
 </div>
 		
