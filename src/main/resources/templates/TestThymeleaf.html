@@ -5,6 +5,22 @@
     <title>Hello</title>
 </head>
 <body>
-<p th:text="${key}">what is the key?</p>
+<p>
+<table>
+    <thead>
+    <tr>
+        <th>用户id</th>
+        <th>用户密码</th>
+    </tr>
+    </thead>
+    <tbody>
+<!--    在列表中显示所有user的信息-->
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.getId()}">用户id</td>
+        <td th:text="${user.getPassword()}">密码</td>
+    </tr>
+    </tbody>
+</table>
+</p>
 </body>
 </html>
