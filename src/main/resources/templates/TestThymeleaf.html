@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-<!--    在列表中显示所有user的信息-->
+    <!--    在列表中显示所有user的信息-->
     <tr th:each="user : ${userList}">
         <td th:text="${user.getId()}">用户id</td>
         <td th:text="${user.getPassword()}">密码</td>

@@ -1,6 +1,5 @@
 package com.eldcare.controller;
 
-import com.eldcare.mapper.UserMapper;
 import com.eldcare.model.User;
 import com.eldcare.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
@@ -23,7 +21,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        return "login";
+        return "Login";
     }
 
     @PostMapping("/login")
@@ -46,7 +44,7 @@ public class LoginController {
         } else {
             //登录失败
             model.addAttribute("error", "用户名或密码错误");
-            return "login";
+            return "Login";
         }
 
     }
