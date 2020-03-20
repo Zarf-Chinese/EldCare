@@ -1,6 +1,6 @@
 <!doctype html>
 <!--以下是注册界面-->
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>欢迎注册EldCare!</title>
@@ -14,7 +14,7 @@
   <div data-role="content">
   	<div >
   	  <h2> <strong>欢迎您注册EldCare！</strong></h2>
-  	  <form role="form" action="signUp.do" method="post">
+  	  <form role="form" action="/signUp" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail1"
                                 >用户名 &nbsp; &nbsp;
@@ -23,7 +23,7 @@
                                 type="email"
                                 class="form-control"
                                 id="exampleInputEmail1"
-                                name="uid"
+                                name="name"
                             />
                         </div>
                         <h5></h5>
@@ -33,7 +33,7 @@
                                 type="password"
                                 class="form-control"
                                 id="exampleInputPassword3"
-                                name="upwd"
+                                name="password"
                             />
                         </div>
                         <h5></h5>
@@ -55,6 +55,8 @@
                         <!--submit按钮要放在表单内，否则无法提交信息-->
                     </form>
                 </div>
+      <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:if="${error!=null}"
+           th:text="${error}"></div>
   </div>
 </div>
 </body>

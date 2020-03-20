@@ -1,6 +1,6 @@
 <!doctype html>
 <!--以下是登录界面-->
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>loginMobile</title>
@@ -12,23 +12,25 @@
 <body>
 <div data-role="page" id="page" data-theme="e">
   <div data-role="content" >
-	  <form action="login.do" method="post">
+	  <form action="login" method="post">
     <h2> <strong>登录</strong></h2>
     <div class="form-group<form></form>">
 	  <label for="exampleInputEmail1">用户名 &nbsp; &nbsp; </label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" name="uid">
+	    <input type="email" class="form-control" id="exampleInputEmail1" name="name">
 	    <h5></h5>
     </div>
   <div class="form-group">
       <label for="exampleInputPassword1">密码</label>
-		<input type="password" class="form-control" id="exampleInputPassword1" name="upwd">
+		<input type="password" class="form-control" id="exampleInputPassword1" name="password">
   </div>
   <h5></h5>
   <h5></h5>
   <button type="submit"> 登录</button>
 		  </form>
-  <a href="signUp.html"> 注册新账号 </a>
+  <a href="/signUp"> 注册新账号 </a>
   </div>
+    <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:if="${error!=null}"
+         th:text="${error}"></div>
 </div>
 </body>
 </html>

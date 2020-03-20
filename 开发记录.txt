@@ -6,3 +6,12 @@
 4-日常工作记录：日常工作*n，受理老人，护工
 5-家属：基本信息，关联老人（关联1、3）
 6-院方：基本信息，护工列表（关联1、2）
+
+3.20
+【mybatis-generator】
+可以不用写很多sql语句。命令：mvn mybatis-generator:generate
+(mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate)
+教程：
+https://www.cnblogs.com/deng-cc/p/9340748.html
+更新表user字段，添加token作为缓存信息；
+实装登录、注册功能，并添加简单的验证

@@ -2,20 +2,27 @@ drop database eld_care;
 create database eld_care;
 use eld_care;
 /*用户*/
-drop table if exists T_USER;
-create table T_USER
+drop table if exists user;
+create table user
 (
-	ID VARCHAR(50) not null,
-	PASSWORD VARCHAR(50) not null,
-	TYPE INT,
-	GMT_CREATE BIGINT,
-	GMT_MODIFIED BIGINT,
-	constraint T_USER_PK
-		primary key (ID)
+	ID int auto_increment,
+	NAME varchar(50) not null,
+	PASSWORD varchar(50) not null,
+	TYPE int null,
+	GMT_CREATE bigint null,
+	GMT_MODIFIED bigint null,
+	TOKEN varchar(50) null comment '缓存信息，每次登陆产生',
+	constraint user_NAME_uindex
+		unique (NAME),
+	constraint user_id_uindex
+		unique (ID)
 );
+
+alter table user
+	add primary key (NAME);
+
+
 
 /*comment on column T_USER.TYPE is '1、护工；2、家属；3、院方';*/
 
-create unique index T_USER_ID_UINDEX
-	on T_USER (ID);
 
