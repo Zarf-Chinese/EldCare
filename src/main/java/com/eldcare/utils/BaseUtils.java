@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Component
@@ -23,21 +24,19 @@ public class BaseUtils {
 
     @Autowired
     UserService userService;
+    public HttpServletRequest getCurrentRequest(){
+        return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+    }
+    public Cookie getTokenCookie(){
+        HttpServletRequest request = getCurrentRequest();
+        return CookieUtils.get(request,CookieUtils.TOKEN);
+    }
     public User getCurrentUser(){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        Cookie[] cookies = request.getCookies();
-        String token=null;
-        for (Cookie ck :
-                cookies) {
-            //查找token
-            if (ck.getName() .equals("token")){
-                token= ck.getValue();
-            }
-        }
-        if(token==null){
+        Cookie tokenCookie=getTokenCookie ();
+        if(tokenCookie==null || tokenCookie.getValue()==null){
             return null;
         }
         //通过token查找user
-        return userService.getByToken(token);
+        return userService.getByToken(tokenCookie.getValue());
     }
 }

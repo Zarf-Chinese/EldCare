@@ -6,6 +6,7 @@ import com.eldcare.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Service
 public class UserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     //查询此用户名是否存在
@@ -53,7 +54,9 @@ public class UserService {
                 .andNameEqualTo(dbUser.getName());
         userMapper.updateByExampleSelective(user, example);
     }
-
+    public void Delete(User user){
+        userMapper.deleteByPrimaryKey(user.getName());
+    }
     /**
      * 通过token获取User
      * @param token （缓存）登录时凭证

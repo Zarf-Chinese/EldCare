@@ -26,7 +26,7 @@ public class SignUpController {
     //get方法：渲染页面
     @GetMapping("/signUp")
     public String signUp(Model model) {
-        return "SignUp";
+        return "/SignUp";
     }
 
     @PostMapping("/signUp")
@@ -37,7 +37,7 @@ public class SignUpController {
         if (userService.isExist(name)) {
             //此用户名已存在
             model.addAttribute("error", "此用户名已存在！");
-            return "SignUp";
+            return "/SignUp";
         } else {
             User user = new User();
             user.setName(name);

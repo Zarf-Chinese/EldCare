@@ -2,6 +2,7 @@ package com.eldcare.controller;
 
 import com.eldcare.model.User;
 import com.eldcare.service.UserService;
+import com.eldcare.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,7 @@ public class LoginController {
         if(dbUser==null){
             //找不到该用户
             model.addAttribute("error", "该用户不存在！");
-            return "Login";
+            return "/Login";
         }
         if (dbUser.getPassword().equals(password)) {
             //登录成功，写cookie和session
@@ -44,12 +45,12 @@ public class LoginController {
             user.setToken(token);
             userService.Update(user);
             // 写cookie和session
-            response.addCookie(new Cookie("token", token));
+            CookieUtils.set(response, CookieUtils.TOKEN,token,-1);
             return "redirect:/home";
         } else {
             //登录失败
             model.addAttribute("error", "用户名或密码错误");
-            return "Login";
+            return "/Login";
         }
 
     }

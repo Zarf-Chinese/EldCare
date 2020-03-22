@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @Author ShiQi
  * @Date 2020/03/20 17:13
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
     @GetMapping("/home")
-    public String goHome(Model model){
+    public String goHome(Model model, HttpServletResponse response){
         User currentUser= BaseUtils.instance.getCurrentUser();
         if(currentUser==null){
             //如果尚未登录
@@ -25,6 +27,6 @@ public class HomeController {
             return "redirect:/identity";
         }
         model.addAttribute("user",currentUser);
-        return "Home";
+        return "/Home";
     }
 }

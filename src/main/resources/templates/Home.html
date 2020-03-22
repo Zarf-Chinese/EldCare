@@ -1,15 +1,14 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
-    <!-- <link href="../../../../css/bootstrap.css" rel="stylesheet" type="text/css"> -->
-    <link href="../../../../css/bootstrap-3.3.7.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="js/scripts.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,7 +44,8 @@
                 <h4 class="text-primary">公告栏</h4>
                 <h5>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活！
                     有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</h5>
-                <h3><a href="#" class="h5 text-danger" role="button">了解更多</a></h3>
+                <h3><a href="#" class="h5 text-danger" role="button" onclick="ec.logout()">登出账户</a></h3>
+                <h3><a href="#" class="h5 text-danger" role="button" onclick="ec.deleteUser()">（测试）删除账户</a></h3>
             </div>
         </div>
     </div>
