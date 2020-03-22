@@ -1,134 +1,136 @@
 <!doctype html>
 <!-- 家属端界面-->
 <html>
-	
+
 <head>
-<meta charset="UTF-8">
-<title>menu</title>
-<link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.dialog.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.resizable.min.css" rel="stylesheet" type="text/css">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-<script src="jQueryAssets/jquery-1.11.1.min.js"></script>
-<script src="jQueryAssets/jquery.ui-1.10.4.dialog.min.js"></script>
+    <meta charset="UTF-8">
+    <title>menu</title>
+    <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
+    <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+    <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+    <link href="jQueryAssets/jquery.ui.dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="jQueryAssets/jquery.ui.resizable.min.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
+    <script src="jQueryAssets/jquery.ui-1.10.4.dialog.min.js"></script>
 </head>
 
 <body>
-<div data-role="page" id="page1" >
-<!--	导航侧栏及跳转关系-->
-	<div data-role="panel" id="myPanel" data-theme="e"> 
-     <img src="images/EldCare%20(2).png" width="30" height="30" alt="logo" align="center" />
-	 <h2>EldCare</h2>
-    <div data-role="collapsible-set">
-      <div data-role="collapsible">
-        <h3>老人资料</h3>
-        <a href="#page1" class="ui-btn">个人资料</a>
-		<a href="#page2" class="ui-btn">老人资料</a>
-      </div>
-      <div data-role="collapsible" data-collapsed="true">
-        <h3>老人日常</h3>
-        <a href="#page3" class="ui-btn">护工评价</a>
-		<a href="#page4" class="ui-btn">护工排行</a>
-		<a href="#page5" class="ui-btn">护工社群</a>
-      </div>
-      <div data-role="collapsible" data-collapsed="true">
-        <h3>护工评价</h3>
-        <a href="#page6" class="ui-btn">老人日常</a>
-		<a href="#page7" class="ui-btn">工作汇报</a>
-      </div>
-		
-		  <div data-role="collapsible" data-collapsed="true">
-			  <h3>养老院情况</h3>
-        <a href="#page8" class="ui-btn">养老院信息</a>
-      </div>
+<div data-role="page" id="page1">
+    <!--	导航侧栏及跳转关系-->
+    <div data-role="panel" id="myPanel" data-theme="e">
+        <img src="images/EldCare%20(2).png" width="30" height="30" alt="logo" align="center"/>
+        <h2>EldCare</h2>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h3>老人资料</h3>
+                <a href="#page1" class="ui-btn">个人资料</a>
+                <a href="#page2" class="ui-btn">老人资料</a>
+            </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>老人日常</h3>
+                <a href="#page3" class="ui-btn">护工评价</a>
+                <a href="#page4" class="ui-btn">护工排行</a>
+                <a href="#page5" class="ui-btn">护工社群</a>
+            </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>护工评价</h3>
+                <a href="#page6" class="ui-btn">老人日常</a>
+                <a href="#page7" class="ui-btn">工作汇报</a>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>养老院情况</h3>
+                <a href="#page8" class="ui-btn">养老院信息</a>
+            </div>
+        </div>
+
     </div>
-    
-	</div> 
-  <div data-role="header" data-theme="e">
-<!--	侧栏隐藏滑动出现-->  
-  <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon " ></a>
-  <h1 class="ui-title" role="heading" aria-level="1" style="color: gray">养老院情况</h1>
-  </div>
-<!--  成功登陆后首显示界面-->
-<div data-role="content">
-	<!--以下为后端传前端数据-->
-  <div>
-  <div style="text-align: center"> <img src="images/home_background.jpeg" width="300" height="170" alt=""/>
-	  
-  </div>	
-  <div style="text-align: center" > </div>
-  </div>
-	<!--以上-->
-  </div>
-<div data-role="footer" data-theme="e">
-    <h4>脚注</h4>
-  </div>
+    <div data-role="header" data-theme="e">
+        <!--	侧栏隐藏滑动出现-->
+        <a href="#myPanel"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <h1 class="ui-title" role="heading" aria-level="1" style="color: gray">养老院情况</h1>
+    </div>
+    <!--  成功登陆后首显示界面-->
+    <div data-role="content">
+        <!--以下为后端传前端数据-->
+        <div>
+            <div style="text-align: center"><img src="images/home_background.jpeg" width="300" height="170" alt=""/>
+
+            </div>
+            <div style="text-align: center"></div>
+        </div>
+        <!--以上-->
+    </div>
+    <div data-role="footer" data-theme="e">
+        <h4>脚注</h4>
+    </div>
 </div>
 
 <div data-role="page" id="page8">
-<!--	导航侧栏及跳转关系-->
-	<div data-role="panel" id="myPanel1" data-theme="e"> 
-     <img src="images/EldCare%20(2).png" width="30" height="30" alt="logo" align="center" />
-	 <h2>EldCare</h2>
-    <div data-role="collapsible-set">
-      <div data-role="collapsible">
-        <h3>老人资料</h3>
-        <a href="#page1" class="ui-btn">个人资料</a>
-		<a href="#page2" class="ui-btn">老人资料</a>
-      </div>
-      <div data-role="collapsible" data-collapsed="true">
-        <h3>老人日常</h3>
-        <a href="#page3" class="ui-btn">护工评价</a>
-		<a href="#page4" class="ui-btn">护工排行</a>
-		<a href="#page5" class="ui-btn">护工社群</a>
-      </div>
-      <div data-role="collapsible" data-collapsed="true">
-        <h3>护工评价</h3>
-        <a href="#page6" class="ui-btn">老人日常</a>
-		<a href="#page7" class="ui-btn">工作汇报</a>
-      </div>
-		
-		  <div data-role="collapsible" data-collapsed="true">
-			  <h3>养老院情况</h3>
-        <a href="#page8" class="ui-btn">养老院信息</a>
-      </div>
+    <!--	导航侧栏及跳转关系-->
+    <div data-role="panel" id="myPanel1" data-theme="e">
+        <img src="images/EldCare%20(2).png" width="30" height="30" alt="logo" align="center"/>
+        <h2>EldCare</h2>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h3>老人资料</h3>
+                <a href="#page1" class="ui-btn">个人资料</a>
+                <a href="#page2" class="ui-btn">老人资料</a>
+            </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>老人日常</h3>
+                <a href="#page3" class="ui-btn">护工评价</a>
+                <a href="#page4" class="ui-btn">护工排行</a>
+                <a href="#page5" class="ui-btn">护工社群</a>
+            </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>护工评价</h3>
+                <a href="#page6" class="ui-btn">老人日常</a>
+                <a href="#page7" class="ui-btn">工作汇报</a>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>养老院情况</h3>
+                <a href="#page8" class="ui-btn">养老院信息</a>
+            </div>
+        </div>
+
     </div>
-    
-	</div> 
-	<div data-role="header" data-theme="e">
-<!--	侧栏隐藏滑动出现-->  
-  <a href="#myPanel1" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon " ></a>
-  <h1 class="ui-title" role="heading" aria-level="1" style="color: gray">养老院情况</h1>
-  </div>
-<!--  养老院情况界面page8-->
-  <div data-role="content">
-	<!--以下为后端传前段-->
-  <div>
-  <div style="text-align: center">
-	  <h2><strong>同心圆养老院</strong></h2>
-	  <img src="images/home_background.jpeg" width="300" height="170" alt=""/>
-	  
-  </div>	
-  <div style="text-align: center" >
-    <h4 style="color: #4D4D4D">电话：18817653595 </h4>
-    <h4 style="color: #4D4D4D">邮箱：Eldcare@163.com</h4>
-    <h4 style="color: #4D4D4D">网站链接：<a href="#">Eldcare</a>
-    </h4>
-  </div>
-  </div>
-	<!--以上-->
-  </div>
-  <div data-role="footer" data-theme="e">
-    <h4>脚注</h4>
-  </div>
-	</div>
+    <div data-role="header" data-theme="e">
+        <!--	侧栏隐藏滑动出现-->
+        <a href="#myPanel1"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <h1 class="ui-title" role="heading" aria-level="1" style="color: gray">养老院情况</h1>
+    </div>
+    <!--  养老院情况界面page8-->
+    <div data-role="content">
+        <!--以下为后端传前段-->
+        <div>
+            <div style="text-align: center">
+                <h2><strong>同心圆养老院</strong></h2>
+                <img src="images/home_background.jpeg" width="300" height="170" alt=""/>
+
+            </div>
+            <div style="text-align: center">
+                <h4 style="color: #4D4D4D">电话：18817653595 </h4>
+                <h4 style="color: #4D4D4D">邮箱：Eldcare@163.com</h4>
+                <h4 style="color: #4D4D4D">网站链接：<a href="#">Eldcare</a>
+                </h4>
+            </div>
+        </div>
+        <!--以上-->
+    </div>
+    <div data-role="footer" data-theme="e">
+        <h4>脚注</h4>
+    </div>
+</div>
 <script type="text/javascript">
-$(function() {
-	$( "#Dialog1" ).dialog(); 
-});
+    $(function () {
+        $("#Dialog1").dialog();
+    });
 </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.eldcare.controller;
 
+import com.eldcare.model.User;
+import com.eldcare.utils.BaseUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,8 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class IndexController {
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(){
-        return "index";
+        User currentUser= BaseUtils.instance.getCurrentUser();
+        if(currentUser==null){
+            //如果当前用户未登录
+            return "redirect:/login";
+        }
+        return "redirect:/home";
     }
 }

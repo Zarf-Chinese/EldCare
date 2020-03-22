@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>feedback</title>
+    <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+    <script type="text/javascript" src="../lib/jquery.raty.js"></script>
+    <link type="text/css" rel="stylesheet" href="../lib/jquery.raty.css"/>
+    $.fn.raty.defaults.path = common.ctx + '../lib/images';
+</head>
+
+<body>
+
+<form class="form-horizontal required-validate"
+      method="post">
+
+    <div class="form-group">
+        <label for="" class="col-md-2 control-label">评价星级</label>
+        <div class="col-md-10">
+            <div class="raty" name="level" data-bv-notempty>${good_comment.level}</div>
+        </div>
+    </div>
+
+    <div class="form-group text-center ">
+        <div class="col-md-11 col-md-offset-1">
+            <button type="submit" class="btn btn-primary">保存商品评价</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

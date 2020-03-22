@@ -33,6 +33,11 @@ public class LoginController {
         User user = new User();
         user.setName(name);
         User dbUser=userService.getByName(name);
+        if(dbUser==null){
+            //找不到该用户
+            model.addAttribute("error", "该用户不存在！");
+            return "Login";
+        }
         if (dbUser.getPassword().equals(password)) {
             //登录成功，写cookie和session
             String token = UUID.randomUUID().toString();//javaJDK提供的一个自动生成主键的方法:
@@ -40,7 +45,7 @@ public class LoginController {
             userService.Update(user);
             // 写cookie和session
             response.addCookie(new Cookie("token", token));
-            return "redirect:/Home";
+            return "redirect:/home";
         } else {
             //登录失败
             model.addAttribute("error", "用户名或密码错误");

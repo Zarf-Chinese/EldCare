@@ -53,4 +53,19 @@ public class UserService {
                 .andNameEqualTo(dbUser.getName());
         userMapper.updateByExampleSelective(user, example);
     }
+
+    /**
+     * 通过token获取User
+     * @param token （缓存）登录时凭证
+     * @return
+     */
+    public User getByToken(String token){
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andTokenEqualTo(token);
+        List<User> results=userMapper.selectByExample(userExample);
+        if(results.size()==0){
+            return null;
+        }
+        return results.get(0);
+    }
 }
