@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>feedback</title>
     <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -14,6 +15,24 @@
 
 <body>
 
+<div data-role="header">
+
+        <a href="#myPanel"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <h1>提交反馈</h1>
+    </div>
+	
+<div class="ui-grid-b">
+        <div class="ui-block-a">
+        	<div data-role="fieldcontain">
+            <label for="textinput">护工姓名：</label>
+            <input type="text" name="textinput" id="textinput" value=""  />
+          </div>
+        </div>
+        <div class="ui-block-b"></div>
+        <div class="ui-block-c"></div>
+      </div>
+	
 <form class="form-horizontal required-validate"
       method="post">
 
@@ -24,11 +43,21 @@
         </div>
     </div>
 
-    <div class="form-group text-center ">
-        <div class="col-md-11 col-md-offset-1">
-            <button type="submit" class="btn btn-primary">保存商品评价</button>
-        </div>
-    </div>
+    
 </form>
+	
+<div data-role="fieldcontain">
+        <label for="textarea">反馈：</label>
+        <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+      </div>
+	
+<form>
+    <label>
+        <input type="checkbox" name="checkbox-0 ">匿名
+    </label>
+</form>
+	
+<input type="submit" value="提交" >
+	
 </body>
 </html>
