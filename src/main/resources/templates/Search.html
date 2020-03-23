@@ -23,50 +23,51 @@
 
     <div data-role="content">
 
-        <div class="ui-field-contain">
-            <input type="search" name="search-1" id="search-1" value="" placeholder="输入护工信息进行筛选">
-			<input type="submit" value="搜索" >
+<div class="ui-field-contain">
+	<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">护工搜索</a>
+	<a href="#myPopup" class="ui-btn ui-icon-search ui-btn-icon-right">护工搜索</a>
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+      <form method="post" action="">
+        <div>
+          <h3>护工搜索</h3>
+          <label for="usrnm" class="ui-hidden-accessible">名字</label>
+          <input type="text" name="hugongname" id="hugongname" placeholder="名字">
+          <input type="submit" data-inline="true" value="搜索">
+        </div>
+      </form>
+    </div>
         </div>
 
-        <div role="main" class="ui-content">
-                    
-            <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="arrow-r">
-                            
-                <li>
-                                    <a href="#">
-                                        <h3>护工2</h3>
-                                        <p class="topic"><strong>素老林</strong></p>
-                                        <p>工龄：</p>
-                    <p>负责老人数：</p>
-                    <p>评价：</p>
-                                    </a>                 
-                    <a href="#" class="arrow-r">进入主页</a>
-                </li>
-				
-                <li>
-                                    <a href="#">
-                                        <h3>护工2</h3>
-                                        <p class="topic"><strong>素老林</strong></p>
-                                        <p>工龄：</p>
-                    <p>负责老人数：</p>
-                    <p>评价：</p>
-                                    </a>                 
-                    <a href="#" class="arrow-r">进入主页</a>
-                </li>
-                            
-                <li>
-                                    <a href="#">
-                                        <h3>护工1</h3>
-                                        <p class="topic"><strong>张老林</strong></p>
-                                        <p>工龄：</p>
-                    <p>负责老人数：</p>
-                    <p>评价：</p>
-                                    </a>                 
-                    <a href="#" class="arrow-r">进入主页</a>
-                </li>
-          
-            </ul>
-
+      <div role="main" class="ui-content">
+		<ul data-role="listview" data-inset="true">
+      <li>
+        <a href="#">
+        <h3>护工1</h3>
+        <p class="topic"><strong>张老林</strong></p>
+        <p>工龄：</p>
+        <p>负责老人数：</p>
+        <p>评价：</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+		<h3>护工2</h3>
+        <p class="topic"><strong>张老林</strong></p>
+        <p>工龄：</p>
+        <p>负责老人数：</p>
+        <p>评价：</p>
+        </a>
+      </li>
+	  <li>
+        <a href="#">
+		<h3>护工3</h3>
+        <p class="topic"><strong>张老林</strong></p>
+        <p>工龄：</p>
+        <p>负责老人数：</p>
+        <p>评价：</p>
+        </a>
+      </li>
+    </ul>
         </div><!-- /content -->
 
     </div>
