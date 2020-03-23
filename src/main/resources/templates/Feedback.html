@@ -7,10 +7,6 @@
     <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-
-    <script type="text/javascript" src="../lib/jquery.raty.js"></script>
-    <link type="text/css" rel="stylesheet" href="../lib/jquery.raty.css"/>
-    $.fn.raty.defaults.path = common.ctx + '../lib/images';
 </head>
 
 <body>
@@ -25,7 +21,7 @@
 <div class="ui-grid-b">
         <div class="ui-block-a">
         	<div data-role="fieldcontain">
-            <label for="textinput">护工姓名：</label>
+            <label for="textinput">护工姓名</label>
             <input type="text" name="textinput" id="textinput" value=""  />
           </div>
         </div>
@@ -36,18 +32,20 @@
 <form class="form-horizontal required-validate"
       method="post">
 
-    <div class="form-group">
-        <label for="" class="col-md-2 control-label">评价星级</label>
-        <div class="col-md-10">
-            <div class="raty" name="level" data-bv-notempty>${good_comment.level}</div>
-        </div>
-    </div>
-
+    <fieldset class="ui-field-contain">
+        <label for="score">您的评价</label>
+        <select name="score" id="score"data-native-menu="false">
+            <option value="A">各方面都很不错，有明显的优点</option>
+            <option value="B">大方面不错，没有明显需要改进的地方</option>
+            <option value="C">大方面不错，有个别需要改进的地方</option>
+            <option value="D">不让人满意，有明显需要改进的地方</option>
+        </select>
+    </fieldset>
     
 </form>
 	
 <div data-role="fieldcontain">
-        <label for="textarea">反馈：</label>
+        <label for="textarea">详细内容</label>
         <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
       </div>
 	
