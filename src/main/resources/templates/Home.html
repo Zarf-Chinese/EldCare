@@ -19,25 +19,64 @@
     </div>
 
     <div data-role="content">
-        <div><!-- 养老院信息模块 -->
-            <img src="images/养老院主页图片.jpg" width="280" height="220" alt="养老院图片"/>
-            <div class="panel panel-default">
-                <div class="panel-heading">
+		
+	
+		
+        <div align="center"><!-- 养老院信息模块 -->
+			<img src="../static/images/养老院主页图片.jpg" width="300" height="" alt=""/>
+          <div class="panel panel-default">
+          <div class="panel-heading">
                     <h3 class="panel-title h3">ELDCARE</h3>
                 </div>
                 <div class="panel-body"> 地点：上海市静安区145号</div>
-                <div class="panel-footer">联系方式：18817604483</div>
+                <div class="panel-footer">&nbsp;联系方式：188176044833</div>
             </div>
+			
+			<a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-grid ui-btn-icon-right">编辑修改</a>
+            <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+                <form method="post" action="">
+                    <div>
+                        <h3>护工搜索</h3>
+                        <label for="hugongname" class="ui-hidden-accessible">名字</label>
+                        <input type="text" name="hugongname" id="hugongname" placeholder="名字">
+                        <input type="submit" data-inline="true" value="搜索">
+                    </div>
+                </form>
+            </div>
+			
         </div>
+		
+			
+		
         <div><!-- 公告模块 -->
-
-            <div class="jumbotron">
-                <h4 class="text-primary">公告栏</h4>
-                <h5>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活！
-                    有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</h5>
-                <h3><a href="#" class="h5 text-danger" role="button" onclick="ec.logout()">登出账户</a></h3>
-                <h3><a href="#" class="h5 text-danger" role="button" onclick="ec.deleteUser()">（测试）删除账户</a></h3>
-            </div>
+			<h3>&nbsp;</h3>
+<h3 align="center">公告栏</h3>
+			<ul data-role="listview" data-inset="true">
+                <li>
+                    <a href="#">
+                        <h3>热烈欢迎来自育才高中的志愿者</h3>
+						
+                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
+                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>热烈欢迎来自育才高中的志愿者</h3>
+						
+                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
+                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>热烈欢迎来自育才高中的志愿者</h3>
+						
+                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
+                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
