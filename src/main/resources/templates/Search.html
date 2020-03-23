@@ -11,6 +11,7 @@
 
 <body>
 
+<form method="post" action="">		
 <div data-role="page" id="page1" data-theme="d">
 
     <div data-role="header">
@@ -23,26 +24,25 @@
     <div data-role="content">
 
         <div class="ui-field-contain">
-                <input type="search" name="search-1" id="search-1" value="" placeholder="输入护工信息进行筛选">
+            <input type="search" name="search-1" id="search-1" value="" placeholder="输入护工信息进行筛选">
+			<input type="submit" data-inline="true" value="搜索">
         </div>
 
-         
         <div role="main" class="ui-content">
-
                     
             <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="arrow-r">
                             
-                            
                 <li>
                                     <a href="#">
-                                        <h3>护工1</h3>
-                                        <p class="topic"><strong>李老林</strong></p>
+                                        <h3>护工2</h3>
+                                        <p class="topic"><strong>素老林</strong></p>
                                         <p>工龄：</p>
                     <p>负责老人数：</p>
                     <p>评价：</p>
                                     </a>                 
                     <a href="#" class="arrow-r">进入主页</a>
                 </li>
+				
                 <li>
                                     <a href="#">
                                         <h3>护工2</h3>
@@ -64,8 +64,7 @@
                                     </a>                 
                     <a href="#" class="arrow-r">进入主页</a>
                 </li>
-
-                        
+          
             </ul>
 
         </div><!-- /content -->
@@ -74,5 +73,6 @@
 
 </div>
 
+</form>
 </body>
 </html>

@@ -18,23 +18,17 @@
         <h1>提交反馈</h1>
     </div>
 	
-<div class="ui-grid-b">
-        <div class="ui-block-a">
-        	<div data-role="fieldcontain">
-            <label for="textinput">护工姓名</label>
-            <input type="text" name="textinput" id="textinput" value=""  />
-          </div>
-        </div>
-        <div class="ui-block-b"></div>
-        <div class="ui-block-c"></div>
-      </div>
+<form method="post" action="">	
+	<br/>
+<label for="hugongxingming">护工姓名</label>
+            <input type="text" name="hugongxingming" id="hugongxingming" value=""  />
 	
 <form class="form-horizontal required-validate"
       method="post">
 
     <fieldset class="ui-field-contain">
         <label for="score">您的评价</label>
-        <select name="score" id="score"data-native-menu="false">
+        <select name="score" id="score" data-native-menu="false">
             <option value="A">各方面都很不错，有明显的优点</option>
             <option value="B">大方面不错，没有明显需要改进的地方</option>
             <option value="C">大方面不错，有个别需要改进的地方</option>
@@ -46,16 +40,18 @@
 	
 <div data-role="fieldcontain">
         <label for="textarea">详细内容</label>
-        <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+        <input type="text" name="xiangxineirong" id="xiangxineirong" value=""  />
       </div>
 	
 <form>
     <label>
-        <input type="checkbox" name="checkbox-0 ">匿名
+        <input type="checkbox" name="niming">匿名
     </label>
 </form>
 	
 <input type="submit" value="提交" >
+	
+</form>
 	
 </body>
 </html>
