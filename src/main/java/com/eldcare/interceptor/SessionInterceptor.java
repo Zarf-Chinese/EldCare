@@ -1,14 +1,13 @@
-package spring17.interceptor;
+package com.eldcare.interceptor;
 
+import com.eldcare.mapper.UserMapper;
+import com.eldcare.model.User;
+import com.eldcare.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import spring17.mapper.UserMapper;
-import spring17.model.Notification;
-import spring17.model.User;
-import spring17.model.UserExample;
-import spring17.service.NotificationService;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,13 +23,11 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired//没有@Service，这里的自动注入不生效
     private UserMapper userMapper;
-    @Autowired
-    private NotificationService notificationService;//用于显示页面通知数
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length != 0)//???这里不加{}也可以验证吗？
+        if (cookies != null && cookies.length != 0)
             for (Cookie cookie : cookies) {
                 if ((cookie.getName()).equals("token")) {
                     String token = cookie.getValue();
@@ -42,8 +39,6 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (users.size() != 0) {
                         //写入session
                         request.getSession().setAttribute("user", users.get(0));
-                        int unreadCount = notificationService.unreadCount(users.get(0).getId());
-                        request.getSession().setAttribute("unreadCount", unreadCount);
                     }
                     break;//命中结束循环
                 }

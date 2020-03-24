@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eldcare.mapper.BroadcastMapper">
+  <resultMap id="BaseResultMap" type="com.eldcare.model.Broadcast">
+    <constructor>
+      <idArg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CREATOR" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="TITLE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CONTENT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GMT_CREATE" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="TYPE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CREATOR, TITLE, CONTENT, GMT_CREATE, TYPE
+  </sql>
+  <select id="selectByExample" parameterType="com.eldcare.model.BroadcastExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from broadcast
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from broadcast
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from broadcast
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.eldcare.model.BroadcastExample">
+    delete from broadcast
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.eldcare.model.Broadcast">
+    insert into broadcast (ID, CREATOR, TITLE, 
+      CONTENT, GMT_CREATE, TYPE
+      )
+    values (#{id,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eldcare.model.Broadcast">
+    insert into broadcast
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.eldcare.model.BroadcastExample" resultType="java.lang.Long">
+    select count(*) from broadcast
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update broadcast
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreate != null">
+        GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update broadcast
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATOR = #{record.creator,jdbcType=INTEGER},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=VARCHAR},
+      GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT},
+      TYPE = #{record.type,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eldcare.model.Broadcast">
+    update broadcast
+    <set>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eldcare.model.Broadcast">
+    update broadcast
+    set CREATOR = #{creator,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      TYPE = #{type,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
