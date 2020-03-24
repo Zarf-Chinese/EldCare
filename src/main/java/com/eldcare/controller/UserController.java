@@ -6,6 +6,7 @@ import com.eldcare.utils.BaseUtils;
 import com.eldcare.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,12 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  * @Date 20/03/22
  */
 @Controller
-@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     String deleteUser() {
         User user = BaseUtils.instance.getCurrentUser();
         if (user != null) {
@@ -32,7 +32,7 @@ public class UserController {
         return "redirect:/logout";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     String logoutUser(HttpServletResponse response) {
         User user = BaseUtils.instance.getCurrentUser();
         if (user != null) {
