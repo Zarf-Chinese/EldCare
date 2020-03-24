@@ -11,14 +11,14 @@
 </head>
 
 <body>
-<div data-role="page" id="page" data-theme="a">
+<div data-role="page" id="page2" data-theme="a">
     <div data-role="content">
         <div>
-            <h2><strong>欢迎您注册EldCare！</strong></h2>
+            <h2 align="center"><strong>欢迎您注册EldCare！</strong></h2>
             <form role="form" action="/signUp" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1"
-                    >用户名 &nbsp; &nbsp;
+                    >用户名:&nbsp; &nbsp;
                     </label>
                     <input
                             type="email"
@@ -29,7 +29,7 @@
                 </div>
                 <h5></h5>
                 <div class="form-group">
-                    <label for="exampleInputPassword5">密码</label>
+                    <label for="exampleInputPassword5">密码:</label>
                     <input
                             type="password"
                             class="form-control"
@@ -39,7 +39,7 @@
                 </div>
                 <h5></h5>
                 <div class="form-group">
-                    <label for="exampleInputPassword7">确认密码</label>
+                    <label for="exampleInputPassword7">确认密码:</label>
                     <input
                             type="password"
                             class="form-control"
@@ -47,13 +47,19 @@
                     />
                 </div>
                 <h5></h5><h5></h5>
-                <button
+                <div class="ui-grid-b">
+                  <div class="ui-block-a"></div>
+                  <div class="ui-block-b">
+					<button
                         type="submit"
                         class="btn btn-primary btn-block btn-warning"
                 >
-                    注册
-                </button>
-                <!--submit按钮要放在表单内，否则无法提交信息-->
+            注册
+        </button>
+					</div>
+                  <div class="ui-block-c"></div>
+                </div>
+
             </form>
         </div>
         <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:if="${error!=null}"
