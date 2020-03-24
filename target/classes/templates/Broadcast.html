@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Identity</title>
-    <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 
-<div data-role="page" id="page2" data-theme="d">
+<div data-role="page" id="page2" data-theme="a">
 
     <div data-role="header">
 
@@ -21,39 +20,37 @@
     </div>
 
     <div data-role="content">
+      <form method="post" action="" > <!--action（未编辑）为表单提交到数据库-->
       <div class="ui-grid-b">
         <div class="ui-block-a">
         	<div data-role="fieldcontain">
-            <label for="textinput">标题：</label>
-            <input type="text" name="textinput" id="textinput" value=""  />
+            <label for="headline">标题：</label>
+            <input type="text" name="title" id="headline" value=""  />
           </div>
         </div>
         <div class="ui-block-b"></div>
         <div class="ui-block-c"></div>
-      </div>
+      </div>  <!--  公告标题输入，分为一行三列网格-->
+      &nbsp;&nbsp;
+      <div data-role="fieldcontain">  
+        <label for="textarea">公告内容：</label>
+        <textarea cols="40" rows="8" name="content" id="textarea"></textarea>
+      </div>  <!--  公告内容输入--> 
       &nbsp;&nbsp;
       <div data-role="fieldcontain">
-        <label for="textarea">公告内容：</label>
-        <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
-      </div>
-      &nbsp;&nbsp;&nbsp;
-      <div data-role="fieldcontain">
-        <fieldset data-role="controlgroup" data-type="horizontal">
-          <legend>查看范围：</legend>
-          <input type="checkbox" name="checkbox1" id="checkbox1_0" class="custom" value="" />
+        <fieldset data-role="controlgroup" data-type="vertical">
+          <legend>发布范围：</legend>
+          <input type="checkbox" name="isForLaoRen" id="checkbox1_0" class="custom" value="" />
           <label for="checkbox1_0">全体老人家属</label>
-          <input type="checkbox" name="checkbox1" id="checkbox1_1" class="custom" value="" />
+          <input type="checkbox" name="isForHuGong" id="checkbox1_1" class="custom" value="" />
           <label for="checkbox1_1">全体护工</label>
         </fieldset>
-      </div>
+      </div>  <!--  查看范围选择-->
       &nbsp;&nbsp;
       <input type="submit" value="提交" data-icon="star" data-iconpos="left" />
-      
+      </form>
     </div>
 
-    <div data-role="footer">
-        <h4>脚注</h4>
-    </div>
 </div>
 </body>
 </html>

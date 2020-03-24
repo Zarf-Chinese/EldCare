@@ -32,8 +32,8 @@ public class IdentityController {
      * @param identityType
      * @return
      */
-    @PostMapping(path="/identity")
-    String setIdentity(@RequestParam("identityType") int identityType,Model model){
+    @GetMapping(path="/identity/{identityType}")
+    String setIdentity(@PathVariable("identityType") int identityType,Model model){
         User currentUser= BaseUtils.instance.getCurrentUser();
         if(currentUser==null){
             System.out.print("尚未登录");
