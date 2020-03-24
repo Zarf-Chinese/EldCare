@@ -2,54 +2,55 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>feedback</title>
-    <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
 
-<div data-role="header">
+<div data-role="page" id="page2" data-theme="a">
+    <div data-role="header">
 
         <a href="#myPanel"
            class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
         <h1>提交反馈</h1>
     </div>
-	
-<form method="post" action="">	
-	<br/>
-<label for="hugongxingming">护工姓名</label>
-<input type="text" name="hugongxingming" id="hugongxingming" value=""  />
-	
+    <div data-role="content">
+        <form method="post" action="">
+        <br/>
+        <label for="hugongxingming">护工姓名</label>
+        <input type="text" name="hugongxingming" id="hugongxingming" value=""/>
 
 
-    <fieldset class="ui-field-contain">
-        <label for="score">您的评价</label>
-        <select name="score" id="score" data-native-menu="false">
-            <option value="A">各方面都很不错，有明显的优点</option>
-            <option value="B">大方面不错，没有明显需要改进的地方</option>
-            <option value="C">大方面不错，有个别需要改进的地方</option>
-            <option value="D">不让人满意，有明显需要改进的地方</option>
-        </select>
-    </fieldset>
-    
-	
-<div data-role="fieldcontain">
-        <label for="xiangxineirong">详细内容</label>
-        <input type="text" name="xiangxineirong" id="xiangxineirong" value=""  style="height: 52px;"/>
-      </div>
-	
+        <fieldset class="ui-field-contain">
+            <label for="score">您的评价</label>
+            <select name="score" id="score" data-native-menu="false">
+                <option value="A">各方面都很不错，有明显的优点</option>
+                <option value="B">大方面不错，没有明显需要改进的地方</option>
+                <option value="C">大方面不错，有个别需要改进的地方</option>
+                <option value="D">不让人满意，有明显需要改进的地方</option>
+            </select>
+        </fieldset>
 
-    <label>
-        <input type="checkbox" name="niming">匿名
-    </label>
 
-	
-<input type="submit" value="提交" >
-	
-</form>
-	
+        <div data-role="fieldcontain">
+            <label for="xiangxineirong">详细内容</label>
+            <input type="text" name="xiangxineirong" id="xiangxineirong" value="" style="height: 52px;"/>
+        </div>
+
+
+            <label>
+                <input type="checkbox" name="niming">匿名
+            </label>
+
+
+        <input type="submit" value="提交">
+
+    </form>
+    </div>
+</div>
 </body>
 </html>

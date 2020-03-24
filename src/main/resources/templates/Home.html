@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        tr {
+            border-bottom: 1px solid #d6d6d6;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,61 +24,97 @@
     </div>
 
     <div data-role="content">
-		
-	
-		
-        <div align="center"><!-- 养老院信息模块 -->
-			<img src="../static/images/养老院主页图片.jpg" width="300" height="" alt=""/>
-          <div class="panel panel-default">
-          <div class="panel-heading">
-                    <h3 class="panel-title h3">ELDCARE</h3>
+
+
+        <div align="center">
+            <div class="panel panel-default"><!-- 后传前-养老院信息模块 -->
+                <img src="../static/images/yuanfang_demo.jpg" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">上海敬老院</h3>
                 </div>
                 <div class="panel-body"> 地点：上海市静安区145号</div>
                 <div class="panel-footer">&nbsp;联系方式：188176044833</div>
             </div>
-			
-			<a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-grid ui-btn-icon-right">编辑修改</a>
+            <div class="panel panel-default"><!-- 后传前-护工信息模块 -->
+                <img src="../static/images/hugong_demo.png" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">老人姓名</h3>
+                </div>
+                <div class="panel-footer">&nbsp;所在护理院：</div>
+                <div class="panel-footer">&nbsp;工龄：</div>
+                <div class="panel-footer">&nbsp;联系方式：</div>
+            </div>
+            <div class="panel panel-default"><!-- 后传前-护工信息模块 -->
+                <img src="../static/images/laoren_demo.jpg" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">老人姓名</h3>
+                </div>
+                <div class="panel-body"> 年龄：</div>
+                <div class="panel-footer">&nbsp;所在护理院：</div>
+                <div class="panel-footer">&nbsp;护工：</div>
+            </div>
+            <a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-grid ui-btn-icon-right">编辑修改</a>
             <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-                <form method="post" action="">
+                <form method="post" action=""><!-- 前传后-编辑院方信息action -->
                     <div>
-                        <h3>护工搜索</h3>
-                        <label for="hugongname" class="ui-hidden-accessible">名字</label>
-                        <input type="text" name="hugongname" id="hugongname" placeholder="名字">
-                        <input type="submit" data-inline="true" value="搜索">
+                        <h3>院方信息</h3>
+                        <label for="yuanfang_name" class="ui-hidden-accessible">院名</label>
+                        <input type="text" name="name" id="yuanfang_name" placeholder="请输入护理院的全称">
+                        <label for="yuanfang_telephone" class="ui-hidden-accessible">联系方式</label>
+                        <input type="text" name="telephone" id="yuanfang_telephone" placeholder="请输入护理院的联系电话">
+                        <label for="yuanfang_address" class="ui-hidden-accessible">地址</label>
+                        <input type="text" name="address" id="yuanfang_address" placeholder="请输入护理院的所在地址">
+                        <input type="submit" data-inline="true" value="提交">
+                    </div>
+                </form>
+                <form method="post" action=""><!-- 前传后-编辑护工信息action -->
+                    <div>
+                        <h3>护工信息</h3>
+                        <label for="hugong_name" class="ui-hidden-accessible">名字</label>
+                        <input type="text" name="name" id="hugong_name" placeholder="请输入您的姓名">
+                        <label for="hugong_telephone" class="ui-hidden-accessible">联系方式</label>
+                        <input type="text" name="telephone" id="hugong_telephone" placeholder="请输入您的电话号码">
+                        <label for="hugong_workage" class="ui-hidden-accessible">工龄</label>
+                        <input type="text" name="workage" id="hugong_workage" placeholder="请输入您的工龄">
+                        <input type="submit" data-inline="true" value="提交">
+                    </div>
+                </form>
+                <form method="post" action=""><!-- 前传后-编辑老人信息action -->
+                    <div>
+                        <h3>老人信息</h3>
+                        <label for="laoren_name" class="ui-hidden-accessible">姓名</label>
+                        <input type="text" name="name" id="laoren_name" placeholder="请输入老人的姓名">
+                        <label for="laoren_age" class="ui-hidden-accessible">年龄</label>
+                        <input type="text" name="age" id="laoren_age" placeholder="请输入老人的年龄">
+                        <input type="submit" data-inline="true" value="提交">
                     </div>
                 </form>
             </div>
-			
+
         </div>
-		
-			
-		
-        <div><!-- 公告模块 -->
-			<h3>&nbsp;</h3>
-<h3 align="center">公告栏</h3>
-			<ul data-role="listview" data-inset="true">
+
+
+        <div><!-- 后传前-公告模块 -->
+            <h3>&nbsp;</h3>
+            <h3 align="center">公告栏</h3>
+            <ul data-role="listview" data-inset="true">
                 <li>
                     <a href="#">
                         <h3>热烈欢迎来自育才高中的志愿者</h3>
-						
-                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
-                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
+
+                        <p class="topic"><strong>2020.3.15 15:30</strong></p>
+                        <p>
+                            福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <h3>热烈欢迎来自育才高中的志愿者</h3>
-						
-                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
-                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h3>热烈欢迎来自育才高中的志愿者</h3>
-						
-                        <p class="topic"><strong>2020.3.15   15:30</strong></p>
-                        <p>福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
+                        <h3>EldCare正式上线</h3>
+
+                        <p class="topic"><strong>2020.2.22 11:36</strong></p>
+                        <p>
+                            养老院辅助管理应用EldCare正式上线！从今天起我院开始使用EldCare作为辅助管理工具，请各位家属与护员下载此App，一起为长辈维护一个健康的生活环境！
+                        </p>
                     </a>
                 </li>
             </ul>
