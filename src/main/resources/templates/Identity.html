@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Identity</title>
-    <link href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 
-<div data-role="page" id="page2" data-theme="d">
+<div data-role="page" id="page2" data-theme="a">
 
     <div data-role="header">
 
@@ -21,50 +20,32 @@
     </div>
 
     <div data-role="content" align="center">
-        <div class="ui-grid-d">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b" align="center">
-                <img src="/images/养老院身份.jpg" width="100" height="100" alt="养老院图片"/>
-            </div>
-            <div class="ui-block-c"></div>
-            <div class="ui-block-d" align="center">
-                <img src="/images/护工身份.jpg" width="100" height="100" alt="护工图片"/></div>
-            <div class="ui-block-e"></div>
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b" align="center" onclick="ec.setIdentity(1)">
-                <a href="#" class="ui-mini" data-role="button">院方</a>
-            </div>
-            <div class="ui-block-c"></div>
-            <div class="ui-block-d" align="center"onclick="ec.setIdentity(2)">
-                <a href="#" class="ui-mini" data-role="button">护理员</a>
-            </div>
-            <div class="ui-block-e"></div>
-        </div>
-
-
-        <div class="ui-grid-d">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c" align="center">
-                <img src="/images/家属身份.jpg" width="100" height="100" alt="家属图片"/>
-            </div>
-            <div class="ui-block-d"></div>
-            <div class="ui-block-e"></div>
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c" align="center"onclick="ec.setIdentity(3)">
-                <a href="#" class="ui-mini" data-role="button">家属</a>
-
-            </div>
-            <div class="ui-block-d"></div>
-            <div class="ui-block-e"></div>
-        </div>
-
-
-    </div>
-
-    <div data-role="footer">
-        <h4>脚注</h4>
+		<figure>&nbsp;
+		  <figcaption>&nbsp;</figcaption>
+	  </figure>
+		<div>
+		<h1></h1>
+		</div>
+      <div class="ui-grid-b" align="center">
+        <div class="ui-block-a" align="center">
+	     <img src="../static/images/养老院身份.jpg" width="130" height="130" alt=""/>
+			<a href="#" data-role="button">养老院</a> 
+	    </div> <!--养老院方-->
+        <div class="ui-block-b"></div>
+        <div class="ui-block-c" align="center">
+		  <img src="../static/images/护工身份.jpg" width="130" height="130" alt=""/>
+			<a href="#" data-role="button">护工</a>
+	    </div><!--护工方-->
+      </div> 
+		<h2></h2>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">&nbsp;</div>
+          <div class="ui-block-b">
+	      <img src="../static/images/家属身份.jpg" width="130" height="130" alt=""/>
+		  <a href="#" data-role="button">老人家属</a>	
+		  </div>
+          <div class="ui-block-c">&nbsp;</div>
+        </div> <!--家属方-->
     </div>
 </div>
 </body>
