@@ -20,36 +20,35 @@
     </div>
     <div data-role="content">
         <form method="post" action="">
-        <br/>
-        <label for="hugongxingming">护工姓名</label>
-        <input type="text" name="hugongxingming" id="hugongxingming" value=""/>
+            <br/>
+<!--            后传前-护工姓名-->
+            <label>护工：</label>
+
+            <fieldset class="ui-field-contain">
+                <label for="score">综合评价</label>
+                <select name="score" id="score" data-native-menu="false">
+                    <option value="1">各方面都很不错，有明显的优点</option>
+                    <option value="2">大方面不错，没有明显需要改进的地方</option>
+                    <option value="3">大方面不错，有个别需要改进的地方</option>
+                    <option value="4">不让人满意，有明显需要改进的地方</option>
+                </select>
+            </fieldset>
 
 
-        <fieldset class="ui-field-contain">
-            <label for="score">您的评价</label>
-            <select name="score" id="score" data-native-menu="false">
-                <option value="A">各方面都很不错，有明显的优点</option>
-                <option value="B">大方面不错，没有明显需要改进的地方</option>
-                <option value="C">大方面不错，有个别需要改进的地方</option>
-                <option value="D">不让人满意，有明显需要改进的地方</option>
-            </select>
-        </fieldset>
+            <div data-role="fieldcontain">
+                <label for="xiangxineirong">详细内容</label>
+                <input type="text" name="xiangxineirong" id="xiangxineirong" value="" style="height: 52px;"/>
+            </div>
 
 
-        <div data-role="fieldcontain">
-            <label for="xiangxineirong">详细内容</label>
-            <input type="text" name="xiangxineirong" id="xiangxineirong" value="" style="height: 52px;"/>
-        </div>
+                <label>
+                    <input type="checkbox" name="niming">匿名
+                </label>
 
 
-            <label>
-                <input type="checkbox" name="niming">匿名
-            </label>
+            <input type="submit" value="提交">
 
-
-        <input type="submit" value="提交">
-
-    </form>
+        </form>
     </div>
 </div>
 </body>

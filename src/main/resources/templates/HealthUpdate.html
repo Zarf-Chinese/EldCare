@@ -23,10 +23,12 @@
         <form method="post" action=""> <!--action（未编辑）为表单提交到数据库-->
             <div class="ui-grid-b">
                 <div class="ui-block-a">
-                    <div data-role="fieldcontain">
-                        <label for="oname">老人姓名：</label>
-                        <input type="text" name="oname" id="oname" value=""/>
-                    </div>
+                    <label for="laoren">选择老人</label>
+                    <select name="laoRenIndex" id="laoren">
+                        <option value="1">laoren1</option>
+                        <option value="2">laoren2</option>
+                        <option value="3">laoren3</option>
+                    </select>
                 </div>
                 <div class="ui-block-b"></div>
                 <div class="ui-block-c"></div>
@@ -34,29 +36,23 @@
             &nbsp;
             <div data-role="fieldcontain">
                 <fieldset data-role="controlgroup">
-                    <legend>是否有异常：</legend>
-                    <input type="radio" name="radio2" id="radio2_0" value=""/>
-                    <label for="radio2_0">是</label>
-                    <input type="radio" name="radio2" id="radio2_1" value=""/>
-                    <label for="radio2_1">否（异常内容填“无”即可）</label>
+                    <input type="checkbox" name="isAbnormal" id="isAbnormal" value=""/>
+                    <label for="isAbnormal">是否有异常</label>
                 </fieldset>
             </div>  <!--       是否有异常-->
             &nbsp;
             <div data-role="fieldcontain">
                 <label for="textarea">异常内容：</label>
-                <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+                <textarea cols="40" rows="8" name="content" id="textarea" placeholder="如果有，则进行填写"></textarea>
             </div>  <!--       异常内容输入-->
             &nbsp;&nbsp;&nbsp;
             <div data-role="fieldcontain">
-                <fieldset data-role="controlgroup">
-                    <input type="radio" name="confirm" id="confirm" value=""/>
-                    <label for="confirm">我承诺以上内容由本人确认</label>
-                </fieldset>
+                <input type="checkbox" name="confirm" id="confirm" value=""/>
+                <label for="confirm">我承诺以上内容由本人确认</label>
             </div>  <!--       承诺本人-->
             &nbsp;&nbsp;
             <div data-role="fieldcontain">
-                <label for="nameinput">汇报人：</label>
-                <input type="text" name="nameinput" id="nameinput" value=""/>
+                <label>汇报人：</label>
             </div>  <!--       汇报人输入-->
             <input type="submit" value="提交" data-icon="star" data-iconpos="left"/>
         </form>
