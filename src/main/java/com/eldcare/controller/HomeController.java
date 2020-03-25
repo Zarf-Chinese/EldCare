@@ -1,9 +1,7 @@
 package com.eldcare.controller;
 
-import com.eldcare.model.Elder;
-import com.eldcare.model.Manager;
-import com.eldcare.model.Nurse;
-import com.eldcare.model.User;
+import com.eldcare.model.*;
+import com.eldcare.service.BroadcastService;
 import com.eldcare.service.ElderService;
 import com.eldcare.service.ManagerService;
 import com.eldcare.service.NurseService;
@@ -27,11 +25,13 @@ public class HomeController {
     @Autowired
     private ManagerService managerService;
     @Autowired
+    private BroadcastService broadcastService;
+    @Autowired
     private NurseService nurseService;
     @Autowired
     private ElderService elderService;
     @GetMapping("/home")
-    public String goHome(Model model, HttpServletResponse response){
+    public String goHome(Model model){
         User currentUser= BaseUtils.instance.getCurrentUser();
         if(currentUser==null){
             //如果尚未登录
@@ -41,14 +41,36 @@ public class HomeController {
             //尚未选择身份
             return "redirect:/identity";
         }
+        int id=currentUser.getId();
+        int type=currentUser.getType();
         //展示内容
-        List<Manager> managers = managerService.list();
-        model.addAttribute("managers",managers);
-        List<Nurse> nurses=nurseService.list();
-        model.addAttribute("nurses",nurses);
-        List<Elder> elders=elderService.list();
-        model.addAttribute("elders",elders);
-
+        //院方
+        if(type==1) {
+            Manager manager = managerService.selectById(id);
+            model.addAttribute("manager", manager);
+            List<Broadcast> broadcasts = broadcastService.listByCreator(id);
+            model.addAttribute("broadcast", broadcasts);
+        }
+        //护工
+        if(type==2) {
+            Nurse nurse = nurseService.selectById(id);
+            model.addAttribute("nurse",nurse);
+            Manager manager=managerService.selectById(nurse.getIn());
+            model.addAttribute("manager", manager);
+            List<Broadcast> broadcasts=broadcastService.listForNurse(nurse.getIn());
+            model.addAttribute("broadcasts",broadcasts);
+        }
+        //老人
+        if(type==3){
+            Elder elder=elderService.selectById(id);
+            model.addAttribute("elder",elder);
+            Nurse nurse = nurseService.selectById(elder.getIn());
+            model.addAttribute("nurse",nurse);
+            Manager manager=managerService.selectById(nurse.getIn());
+            model.addAttribute("manager", manager);
+            List<Broadcast> broadcasts=broadcastService.listForElder(nurse.getIn());
+            model.addAttribute("broadcasts",broadcasts);
+        }
         model.addAttribute("user",currentUser);
         return "/Home";
     }

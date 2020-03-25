@@ -17,12 +17,18 @@
 <body>
 <div data-role="page" id="page3" data-theme="a">
 
+<<<<<<< Updated upstream
     <div data-role="header" th:switch="${session.user.getType()}">
         <a href="#functionPanel"
            class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext"></a>
         <h1 th:case="1">院方主页</h1>
         <h1 th:case="2">护员主页</h1>
         <h1 th:case="3">病家主页</h1>
+=======
+    <div data-role="header">
+        <a href="#myPanel"class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <h1>院方主页</h1>
+>>>>>>> Stashed changes
         <a href="/logout">logout</a>
     </div>
     <!--    侧栏-->
@@ -48,28 +54,62 @@
 
     </div>
     <div data-role="content">
+<<<<<<< Updated upstream
         <div align="center" th:switch="${session.user.getType()}">
             <div class="panel panel-default" th:case="1"><!-- 后传前-养老院信息模块 -->
                 <img src="/images/yuanfang_demo.jpg" height="220" alt=""/>
                 <div class="">
                     <h3 class="panel-title h3" th:text="${manager.getName()}">养老院名称</h3>
+=======
+
+
+        <div align="center">
+            <div class="panel panel-default"><!-- 后传前-养老院信息模块 -->
+<<<<<<< HEAD
+                <div class="media" th:each="manager : ${managers}">
+                    <img src="../static/images/yuanfang_demo.jpg" height="220" alt=""/>
+                    <div class="panel-heading">
+                        <h3 class="panel-title h3" th:text="${manager.name}"></h3>
+                    </div>
+                    <div class="panel-body" th:text="${manager.address}"> 地点：上海市静安区145号</div>
+                    <div class="panel-footer" th:text="${manager.telephone}">&nbsp;联系方式：188176044833</div>
+=======
+                <img src="/images/yuanfang_demo.jpg" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">养老院名称</h3>
+>>>>>>> master
+>>>>>>> Stashed changes
                 </div>
                 <div class="" th:text="|地点：${manager.getAddress()}|"> 地点：上海市静安区145号</div>
                 <div class="" th:text="|联系方式：${manager.getTelephone()}|">联系方式：188176044833</div>
             </div>
+<<<<<<< Updated upstream
             <div class="panel panel-default" th:case="2"><!-- 后传前-护工信息模块 -->
                 <img src="/images/hugong_demo.png" height="220" alt=""/>
                 <div class="">
                     <h3 class="panel-title h3" th:text="${nurse.getName()}">护工姓名</h3>
+=======
+            <div class="panel panel-default"><!-- 后传前-护工信息模块 -->
+                <img src="/images/hugong_demo.png" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">护工姓名</h3>
+>>>>>>> Stashed changes
                 </div>
                 <div class="" th:text="|所在护理院：${manager.getName()}|"> 所在护理院：上海养老院</div>
                 <div class="" th:text="|工龄：${nurse.getWorkAge()}|">工龄：13</div>
                 <div class="" th:text="|联系方式：${nurse.getTelephone()}|">联系方式：188176044833</div>
             </div>
+<<<<<<< Updated upstream
             <div class="panel panel-default" th:case="3"><!-- 后传前-老人信息模块 -->
                 <img src="/images/laoren_demo.jpg" height="220" alt=""/>
                 <div class="">
                     <h3 class="panel-title h3" th:text="${elder.getName()}">老人姓名</h3>
+=======
+            <div class="panel panel-default"><!-- 后传前-老人信息模块 -->
+                <img src="/images/laoren_demo.jpg" height="220" alt=""/>
+                <div class="panel-heading">
+                    <h3 class="panel-title h3">老人姓名</h3>
+>>>>>>> Stashed changes
                 </div>
                 <div class="" th:text="|年龄：${elder.getAge()}|">年龄：63</div>
                 <div class="" th:text="|负责护工：${nurse.getName()}|">负责护工：张三</div>

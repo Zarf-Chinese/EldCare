@@ -27,11 +27,12 @@ public class ManagerService {
         managerMapper.insert(manager);
     }
 
-    public List<Manager> list() {
-        return managerMapper.selectAll();
+    //展示个人信息
+    public Manager selectById(int id){
+        return managerMapper.selectByPrimaryKey(id);
     }
-    //name查询
-    public List<Manager> search(String search) {
+    //展示所有
+    public List<Manager> list(String search) {
         //查找：
         if (StringUtils.isNotBlank(search)) {
             String[] tags = StringUtils.split(search, " ");

@@ -2,10 +2,13 @@ package com.eldcare.service;
 
 import com.eldcare.mapper.NurseMapper;
 import com.eldcare.model.Nurse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author ShiQi
@@ -22,7 +25,23 @@ public class NurseService {
         nurse.setGmtModified(nowTime);
         nurseMapper.insert(nurse);
     }
-    public List<Nurse> list() {
-        return nurseMapper.selectAll();
+    public List<Nurse> list(String search) {
+        //查找：
+        if (StringUtils.isNotBlank(search)) {
+            String[] tags = StringUtils.split(search, " ");
+            //按空格拆分，拼上|，传递至数据库查找
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
+        return nurseMapper.selectBySearch(search);
+    }
+
+    public Nurse selectById(int id) {
+        return nurseMapper.selectByPrimaryKey(id);
+    }
+
+    public void update(Nurse nurse) {
+        nurseMapper.selectByPrimaryKey(nurse.getId());
+        nurse.setGmtModified(nowTime);
+        nurseMapper.updateByPrimaryKey(nurse);
     }
 }

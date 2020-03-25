@@ -220,7 +220,7 @@
     select * from manager
     <where>
       <if test="search != null and search != ''">
-        and title regexp #{search}
+        and name regexp #{search}
       </if>
     </where>
     order by gmt_modified desc

@@ -3,6 +3,7 @@ package com.eldcare.service;
 import com.eldcare.mapper.ElderMapper;
 import com.eldcare.mapper.NurseMapper;
 import com.eldcare.model.Elder;
+import com.eldcare.model.ElderExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,5 +26,21 @@ public class ElderService {
     }
     public List<Elder> list() {
         return elderMapper.selectAll();
+    }
+
+    public Elder selectById(int id) {
+        return elderMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Elder> listByIn(Integer id) {
+        ElderExample elderExample=new ElderExample();
+        elderExample.createCriteria().andInEqualTo(id);
+        return elderMapper.selectByExample(elderExample);
+    }
+
+    public void update(Elder elder) {
+        elderMapper.selectByPrimaryKey(elder.getId());
+        elder.setGmtModified(nowTime);
+        elderMapper.updateByPrimaryKey(elder);
     }
 }

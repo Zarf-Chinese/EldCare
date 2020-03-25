@@ -23,8 +23,8 @@ import java.util.List;
 public class BroadcastService {
     @Resource
     private BroadcastMapper broadcastMapper;
-    @Resource
-    private ManagerMapper managerMapper;
+    @Autowired
+    private BroadcastService broadcastService;
     Long nowTime = System.currentTimeMillis();
 
     public void create(Broadcast broadcast){
@@ -34,12 +34,31 @@ public class BroadcastService {
 
     /**
      * 获取某个manager所发布的所有公告
-     * @param manager
-     * @return
      */
-    public List<Broadcast> getBroadcastFor(Manager manager){
-        BroadcastExample example=new BroadcastExample();
-        example.createCriteria().andCreatorEqualTo(manager.getId());
-        return broadcastMapper.selectByExample(example);
+    public List<Broadcast> listByCreator(int id){
+        BroadcastExample broadcastExample=new BroadcastExample();
+        broadcastExample.createCriteria().andCreatorEqualTo(id);
+        return broadcastMapper.selectByExample(broadcastExample);
+    }
+
+    //某个养老院展示给护工的公告
+    public List<Broadcast> listForNurse(int id){
+        List<Broadcast> broadcasts=broadcastService.listByCreator(id);
+        List<Broadcast> bforNurse = null;
+        for(Broadcast broadcast:broadcasts){
+            if(broadcast.getType()==2||broadcast.getType()==3)
+                bforNurse.add(broadcast);
+        }
+        return bforNurse;
+    }
+    //给老人
+    public List<Broadcast> listForElder(int id) {
+        List<Broadcast> broadcasts=broadcastService.listByCreator(id);
+        List<Broadcast> bforElder = null;
+        for(Broadcast broadcast:broadcasts){
+            if(broadcast.getType()==1||broadcast.getType()==3)
+                bforElder.add(broadcast);
+        }
+        return bforElder;
     }
 }

@@ -69,8 +69,8 @@
 <!--        <table tableName="manager" domainObjectName="Manager"/>-->
 <!--        <table tableName="nurse" domainObjectName="Nurse"/>-->
 <!--        <table tableName="elder" domainObjectName="Elder"/>-->
-<!--        <table tableName="broadcast" domainObjectName="Broadcast"/>-->
+        <table tableName="broadcast" domainObjectName="Broadcast"/>
 <!--        <table tableName="feedback" domainObjectName="Feedback"/>-->
-        <table tableName="health" domainObjectName="Health"/>
+<!--        <table tableName="health" domainObjectName="Health"/>-->
     </context>
 </generatorConfiguration>

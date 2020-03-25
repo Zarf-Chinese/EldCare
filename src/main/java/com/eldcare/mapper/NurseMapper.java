@@ -30,4 +30,6 @@ public interface NurseMapper {
 
     //查找全部
     List<Nurse> selectAll();
+
+    List<Nurse> selectBySearch(String search);
 }
