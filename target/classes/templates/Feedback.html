@@ -14,8 +14,8 @@
 <div data-role="page" id="page2" data-theme="a">
     <div data-role="header">
 
-        <a href="#myPanel"
-           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <a href="/home"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-notext  "></a>
         <h1>提交反馈</h1>
     </div>
     <div data-role="content">
@@ -23,7 +23,7 @@
             <input type="hidden" name="elder" th:value="${session.user.getId()}">
             <br/>
 <!--            后传前-护工姓名-->
-            <label>护工：</label>
+            <label th:text="|反馈护工：${nurse.getName()}|">护工：</label>
 
             <fieldset class="ui-field-contain">
                 <label for="score">综合评价</label>

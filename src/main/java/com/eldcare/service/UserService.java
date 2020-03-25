@@ -1,8 +1,7 @@
 package com.eldcare.service;
 
 import com.eldcare.mapper.UserMapper;
-import com.eldcare.model.User;
-import com.eldcare.model.UserExample;
+import com.eldcare.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +16,10 @@ import java.util.List;
 public class UserService {
     @Resource
     private UserMapper userMapper;
+    public boolean hasIdentity(User user){
+        int type=user.getType();
+        return (type>1 && type<=3);
+    }
 
     //查询此用户名是否存在
     public boolean isExist(String name) {

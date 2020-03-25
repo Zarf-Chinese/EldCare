@@ -215,4 +215,14 @@
     select * from manager
     order by gmt_modified desc
   </select>
+  <!--查找-->
+  <select id="selectBySearch" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from manager
+    <where>
+      <if test="search != null and search != ''">
+        and title regexp #{search}
+      </if>
+    </where>
+    order by gmt_modified desc
+  </select>
 </mapper>

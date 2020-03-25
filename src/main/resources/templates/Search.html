@@ -13,57 +13,57 @@
 
 <div data-role="page" id="page1" data-theme="a">
 
-    <div data-role="header">
+    <div data-role="header" th:switch="${action}">
 
-        <a href="#myPanel"
-           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
-        <h1>护工信息</h1>
+        <a href="/home"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-notext "></a>
+        <h1 th:case="1">绑定院方</h1>
+        <h1 th:case="2">绑定护员</h1>
     </div>
 
     <div data-role="content">
 
         <div class="ui-content">
 
-            <a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-search ui-btn-icon-right">护工搜索</a>
-            <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-                <form method="post" action="">
+            <a href="#search" data-rel="popup" class="ui-btn ui-icon-search ui-btn-icon-right">护工搜索</a>
+            <div data-role="popup" id="search" class="ui-content" style="min-width:250px;">
+                <form method="post" th:if="${action==1}" action="/search/manager">
                     <div>
-                        <h3>护工搜索</h3>
-                        <label for="hugongname" class="ui-hidden-accessible">名字</label>
-                        <input type="text" name="hugongname" id="hugongname" placeholder="名字">
+                        <h3 >院方搜索</h3>
+                        <label for="criteria" class="ui-hidden-accessible">搜索条件</label>
+                        <input type="text" name="criteria" id="criteria" th:value="${criteria}">
+                        <input type="submit" data-inline="true" value="搜索">
+                    </div>
+                </form>
+                <form method="post" th:if="${action==2}" action="/search/nurse">
+                    <div>
+                        <h3 >护工搜索</h3>
+                        <label for="criteria" class="ui-hidden-accessible">搜索条件</label>
+                        <input type="text" name="criteria" id="criteria" th:value="${criteria}">
                         <input type="submit" data-inline="true" value="搜索">
                     </div>
                 </form>
             </div>
         </div>
 
-        <div role="main" class="ui-content">
-            <ul data-role="listview" data-inset="true">
+        <div role="main" class="ui-content" th:switch="${action}">
+            <!--            院方列表-->
+            <ul data-role="listview" data-inset="true" th:case="1" th:each="manager:${managers}">
                 <li>
-                    <a href="#">
-                        <h3>护工1</h3>
-                        <p class="topic"><strong>张老林</strong></p>
-                        <p>工龄：</p>
-                        <p>负责老人数：</p>
-                        <p>评价：</p>
+                    <a th:href="|/bind/manager/${manager.getId()}|">
+                        <h3 th:text="|院方${manager.count}|">院方1</h3>
+                        <p class="topic"><strong th:text="${manager.getName()}">上海养老院</strong></p>
+                        <p th:text="|地址：${manager.getAddress()}|">地址：</p>
                     </a>
                 </li>
+            </ul>
+            <!--            护工列表-->
+            <ul data-role="listview" data-inset="true" th:case="2" th:each="nurse:${nurses}">
                 <li>
-                    <a href="#">
-                        <h3>老人2</h3>
-                        <p class="topic"><strong>张老林</strong></p>
-                        <p>年龄：</p>
-                        <p>健康状况：</p>
-                        <p>护理员：</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h3>养老院3</h3>
-                        <p class="topic"><strong>静安区华盛养老院</strong></p>
-                        <p>签约护员数：</p>
-                        <p>护理老人数：</p>
-                        <p>评分：</p>
+                    <a th:href="|/bind/nurse/${nurse.getId()}|">
+                        <h3 th:text="|护员${nurseStat.count}|">护员1</h3>
+                        <p class="topic"><strong th:text="${nurse.getName()}">张老林</strong></p>
+                        <p th:text="|工龄：${nurse.getWorkAge()}|">工龄：</p>
                     </a>
                 </li>
             </ul>

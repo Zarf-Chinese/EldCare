@@ -9,6 +9,9 @@
       <arg column="SCORE" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="CONTENT" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="GMT_CREATE" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="IS_ANON" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="IS_CHECKED" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="CHECK_TIME" javaType="java.lang.Long" jdbcType="BIGINT" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, ELDER, NURSE, SCORE, CONTENT, GMT_CREATE
+    ID, ELDER, NURSE, SCORE, CONTENT, GMT_CREATE, IS_ANON, IS_CHECKED, CHECK_TIME
   </sql>
   <select id="selectByExample" parameterType="com.eldcare.model.FeedbackExample" resultMap="BaseResultMap">
     select
@@ -104,10 +107,12 @@
   </delete>
   <insert id="insert" parameterType="com.eldcare.model.Feedback">
     insert into feedback (ID, ELDER, NURSE, 
-      SCORE, CONTENT, GMT_CREATE
+      SCORE, CONTENT, GMT_CREATE, 
+      IS_ANON, IS_CHECKED, CHECK_TIME
       )
     values (#{id,jdbcType=INTEGER}, #{elder,jdbcType=INTEGER}, #{nurse,jdbcType=INTEGER}, 
-      #{score,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}
+      #{score,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, 
+      #{isAnon,jdbcType=BIT}, #{isChecked,jdbcType=BIT}, #{checkTime,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.eldcare.model.Feedback">
@@ -131,6 +136,15 @@
       <if test="gmtCreate != null">
         GMT_CREATE,
       </if>
+      <if test="isAnon != null">
+        IS_ANON,
+      </if>
+      <if test="isChecked != null">
+        IS_CHECKED,
+      </if>
+      <if test="checkTime != null">
+        CHECK_TIME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -150,6 +164,15 @@
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="isAnon != null">
+        #{isAnon,jdbcType=BIT},
+      </if>
+      <if test="isChecked != null">
+        #{isChecked,jdbcType=BIT},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -180,6 +203,15 @@
       <if test="record.gmtCreate != null">
         GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT},
       </if>
+      <if test="record.isAnon != null">
+        IS_ANON = #{record.isAnon,jdbcType=BIT},
+      </if>
+      <if test="record.isChecked != null">
+        IS_CHECKED = #{record.isChecked,jdbcType=BIT},
+      </if>
+      <if test="record.checkTime != null">
+        CHECK_TIME = #{record.checkTime,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -192,7 +224,10 @@
       NURSE = #{record.nurse,jdbcType=INTEGER},
       SCORE = #{record.score,jdbcType=INTEGER},
       CONTENT = #{record.content,jdbcType=VARCHAR},
-      GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT}
+      GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT},
+      IS_ANON = #{record.isAnon,jdbcType=BIT},
+      IS_CHECKED = #{record.isChecked,jdbcType=BIT},
+      CHECK_TIME = #{record.checkTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -215,6 +250,15 @@
       <if test="gmtCreate != null">
         GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
       </if>
+      <if test="isAnon != null">
+        IS_ANON = #{isAnon,jdbcType=BIT},
+      </if>
+      <if test="isChecked != null">
+        IS_CHECKED = #{isChecked,jdbcType=BIT},
+      </if>
+      <if test="checkTime != null">
+        CHECK_TIME = #{checkTime,jdbcType=BIGINT},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -224,7 +268,21 @@
       NURSE = #{nurse,jdbcType=INTEGER},
       SCORE = #{score,jdbcType=INTEGER},
       CONTENT = #{content,jdbcType=VARCHAR},
-      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT}
+      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      IS_ANON = #{isAnon,jdbcType=BIT},
+      IS_CHECKED = #{isChecked,jdbcType=BIT},
+      CHECK_TIME = #{checkTime,jdbcType=BIGINT}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  <!--全部显示-->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="int">
+    select * from feedback
+    order by GMT_CREATE desc
+  </select>
+<!--  显示未check的-->
+  <select id="selectNotChecked" resultMap="BaseResultMap" parameterType="int">
+    select * from feedback
+    where IS_CHECKED=false
+    order by GMT_CREATE desc
+  </select>
 </mapper>

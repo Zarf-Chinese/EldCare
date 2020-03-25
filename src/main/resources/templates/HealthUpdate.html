@@ -14,8 +14,8 @@
 
     <div data-role="header">
 
-        <a href="#myPanel"
-           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <a href="/home"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-notext  "></a>
         <h1>老人健康情况汇报</h1>
     </div>
 
@@ -24,10 +24,9 @@
             <div class="ui-grid-b">
                 <div class="ui-block-a">
                     <label for="laoren">选择老人</label>
-                    <select name="laoRenIndex" id="laoren">
-                        <option value="1">laoren1</option>
-                        <option value="2">laoren2</option>
-                        <option value="3">laoren3</option>
+<!--                    后传前：老人列表-->
+                    <select name="elder" id="laoren" th:each="elder:${elders}">
+                        <option th:value="${elder.getIndex()}" th:text="elder.getName()">laoren1</option>
                     </select>
                 </div>
                 <div class="ui-block-b"></div>
@@ -47,7 +46,7 @@
             </div>  <!--       异常内容输入-->
             &nbsp;&nbsp;&nbsp;
             <div data-role="fieldcontain">
-                <input type="checkbox" name="confirm" id="confirm" value=""/>
+                <input type="checkbox" name="confirm" id="confirm" value="" required="required"/>
                 <label for="confirm">我承诺以上内容由本人确认</label>
             </div>  <!--       承诺本人-->
             &nbsp;&nbsp;

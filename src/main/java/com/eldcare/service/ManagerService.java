@@ -2,6 +2,7 @@ package com.eldcare.service;
 
 import com.eldcare.mapper.ManagerMapper;
 import com.eldcare.model.Manager;
+import com.eldcare.model.ManagerExample;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

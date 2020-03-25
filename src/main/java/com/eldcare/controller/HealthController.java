@@ -26,12 +26,12 @@ public class HealthController {
     }
     @PostMapping("/health")
     public String feedback(@RequestParam(name = "nurse")int nurse,
-                           @RequestParam(name="elder")int elder,
+                           @RequestParam(name="elderIndex")int elderIndex,
                            @RequestParam(name="content")String content,
                            @RequestParam(name="isAbnormal")Boolean isAbnormal){
         Health health=new Health();
         health.setNurse(nurse);
-        health.setElder(elder);
+        health.setElder(elderIndex);
         health.setContent(content);
         health.setIsAbnormal(isAbnormal);
         healthService.create(health);

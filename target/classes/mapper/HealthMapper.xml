@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.eldcare.mapper.ElderMapper">
-  <resultMap id="BaseResultMap" type="com.eldcare.model.Elder">
+<mapper namespace="com.eldcare.mapper.HealthMapper">
+  <resultMap id="BaseResultMap" type="com.eldcare.model.Health">
     <constructor>
       <idArg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="IN" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="AGE" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="GMT_MODIFIED" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="NURSE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ELDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="IS_ABNORMAL" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="CONTENT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GMT_CREATE" javaType="java.lang.Long" jdbcType="BIGINT" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,15 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, IN, NAME, AGE, GMT_MODIFIED
+    ID, NURSE, ELDER, IS_ABNORMAL, CONTENT, GMT_CREATE
   </sql>
-  <select id="selectByExample" parameterType="com.eldcare.model.ElderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.eldcare.model.HealthExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from elder
+    from health
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,85 +89,96 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from elder
+    from health
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from elder
+    delete from health
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.eldcare.model.ElderExample">
-    delete from elder
+  <delete id="deleteByExample" parameterType="com.eldcare.model.HealthExample">
+    delete from health
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.eldcare.model.Elder">
-    insert into elder (ID, IN, NAME, 
-      AGE, GMT_MODIFIED)
-    values (#{id,jdbcType=INTEGER}, #{in,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER}, #{gmtModified,jdbcType=BIGINT})
+  <insert id="insert" parameterType="com.eldcare.model.Health">
+    insert into health (ID, NURSE, ELDER, 
+      IS_ABNORMAL, CONTENT, GMT_CREATE
+      )
+    values (#{id,jdbcType=INTEGER}, #{nurse,jdbcType=INTEGER}, #{elder,jdbcType=INTEGER}, 
+      #{isAbnormal,jdbcType=BIT}, #{content,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.eldcare.model.Elder">
-    insert into elder
+  <insert id="insertSelective" parameterType="com.eldcare.model.Health">
+    insert into health
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
       </if>
-      <if test="in != null">
-        IN,
+      <if test="nurse != null">
+        NURSE,
       </if>
-      <if test="name != null">
-        NAME,
+      <if test="elder != null">
+        ELDER,
       </if>
-      <if test="age != null">
-        AGE,
+      <if test="isAbnormal != null">
+        IS_ABNORMAL,
       </if>
-      <if test="gmtModified != null">
-        GMT_MODIFIED,
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="in != null">
-        #{in,jdbcType=INTEGER},
+      <if test="nurse != null">
+        #{nurse,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="elder != null">
+        #{elder,jdbcType=INTEGER},
       </if>
-      <if test="age != null">
-        #{age,jdbcType=INTEGER},
+      <if test="isAbnormal != null">
+        #{isAbnormal,jdbcType=BIT},
       </if>
-      <if test="gmtModified != null">
-        #{gmtModified,jdbcType=BIGINT},
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.eldcare.model.ElderExample" resultType="java.lang.Long">
-    select count(*) from elder
+  <select id="countByExample" parameterType="com.eldcare.model.HealthExample" resultType="java.lang.Long">
+    select count(*) from health
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update elder
+    update health
     <set>
       <if test="record.id != null">
         ID = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.in != null">
-        IN = #{record.in,jdbcType=INTEGER},
+      <if test="record.nurse != null">
+        NURSE = #{record.nurse,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        NAME = #{record.name,jdbcType=VARCHAR},
+      <if test="record.elder != null">
+        ELDER = #{record.elder,jdbcType=INTEGER},
       </if>
-      <if test="record.age != null">
-        AGE = #{record.age,jdbcType=INTEGER},
+      <if test="record.isAbnormal != null">
+        IS_ABNORMAL = #{record.isAbnormal,jdbcType=BIT},
       </if>
-      <if test="record.gmtModified != null">
-        GMT_MODIFIED = #{record.gmtModified,jdbcType=BIGINT},
+      <if test="record.content != null">
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreate != null">
+        GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -174,45 +186,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update elder
+    update health
     set ID = #{record.id,jdbcType=INTEGER},
-      IN = #{record.in,jdbcType=INTEGER},
-      NAME = #{record.name,jdbcType=VARCHAR},
-      AGE = #{record.age,jdbcType=INTEGER},
-      GMT_MODIFIED = #{record.gmtModified,jdbcType=BIGINT}
+      NURSE = #{record.nurse,jdbcType=INTEGER},
+      ELDER = #{record.elder,jdbcType=INTEGER},
+      IS_ABNORMAL = #{record.isAbnormal,jdbcType=BIT},
+      CONTENT = #{record.content,jdbcType=VARCHAR},
+      GMT_CREATE = #{record.gmtCreate,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eldcare.model.Elder">
-    update elder
+  <update id="updateByPrimaryKeySelective" parameterType="com.eldcare.model.Health">
+    update health
     <set>
-      <if test="in != null">
-        IN = #{in,jdbcType=INTEGER},
+      <if test="nurse != null">
+        NURSE = #{nurse,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        NAME = #{name,jdbcType=VARCHAR},
+      <if test="elder != null">
+        ELDER = #{elder,jdbcType=INTEGER},
       </if>
-      <if test="age != null">
-        AGE = #{age,jdbcType=INTEGER},
+      <if test="isAbnormal != null">
+        IS_ABNORMAL = #{isAbnormal,jdbcType=BIT},
       </if>
-      <if test="gmtModified != null">
-        GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT},
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
       </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.eldcare.model.Elder">
-    update elder
-    set IN = #{in,jdbcType=INTEGER},
-      NAME = #{name,jdbcType=VARCHAR},
-      AGE = #{age,jdbcType=INTEGER},
-      GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.eldcare.model.Health">
+    update health
+    set NURSE = #{nurse,jdbcType=INTEGER},
+      ELDER = #{elder,jdbcType=INTEGER},
+      IS_ABNORMAL = #{isAbnormal,jdbcType=BIT},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <!--全部显示-->
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="int">
-    select * from elder
-    order by gmt_modified desc
-  </select>
 </mapper>

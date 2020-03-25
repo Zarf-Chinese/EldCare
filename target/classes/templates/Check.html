@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,43 +15,25 @@
 
     <div data-role="header">
 
-        <a href="#myPanel"
-           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
+        <a href="/home"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-notext"></a>
         <h1>我的反馈</h1>
     </div>
 
     <div data-role="content"> 
         <div role="main" class="ui-content">
-        <ul data-role="listview" data-inset="true">
+<!--            后传前：feedback-->
+        <ul data-role="listview" data-inset="true" th:each="feedback:${feedbacks}">
                 <li>
-                    <a href="#">
-                        <h3>反馈标题1</h3>
-                        <p class="topic"><strong>2020.03.04</strong></p>
+                    <a th:href="|/check/${feedback.id}|">
+                        <h3 th:text="|反馈${feedbackStat.count}|">反馈1</h3>
+                        <p class="topic"><strong th:text="${feedback.getTime()}">2020.03.04</strong></p>
 						<br/>
-                        <p>反馈信息：</p>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    </a>
-                </li>
-               <li>
-                    <a href="#">
-                        <h3>反馈标题1</h3>
-                        <p class="topic"><strong>2020.03.04</strong></p>
-						<br/>
-                        <p>反馈信息：</p>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h3>反馈标题1</h3>
-                        <p class="topic"><strong>2020.03.04</strong></p>
-						<br/>
-                        <p>反馈信息：</p>
+                        <p th:if="!${feedback.getIsAnon()}" th:text="|反馈人：${feedback.getElder()}|">反馈人：张老林</p>
                         <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
                     </a>
                 </li>
             </ul>
-
         </div><!-- /content -->
 
     </div>

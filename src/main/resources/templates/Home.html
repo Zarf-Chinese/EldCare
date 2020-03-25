@@ -17,64 +17,82 @@
 <body>
 <div data-role="page" id="page3" data-theme="a">
 
-    <div data-role="header">
-        <a href="#myPanel"class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-notext ui-nodisc-icon "></a>
-        <h1>院方主页</h1>
+    <div data-role="header" th:switch="${session.user.getType()}">
+        <a href="#functionPanel"
+           class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext"></a>
+        <h1 th:case="1">院方主页</h1>
+        <h1 th:case="2">护员主页</h1>
+        <h1 th:case="3">病家主页</h1>
         <a href="/logout">logout</a>
     </div>
+    <!--    侧栏-->
+    <div data-role="panel" id="functionPanel" data-theme="b">
+        <img src="images/EldCare_logo.png" width="30" height="30" alt="logo" align="center"/>
+        <h2>导航</h2>
+        <h6></h6>
+        <!--        院方侧栏-->
+        <ul data-role="listview" data-inset="true" th:if="${user.getType()==1}">
+            <li><a href="/broadcast">发布公告</a></li>
+        </ul>
+        <!--        护工侧栏-->
+        <ul data-role="listview" data-inset="true" th:if="${user.getType()==2}">
+            <li><a href="/bind/yuanfang">绑定院方</a></li>
+            <li><a href="/healthupdate">提交健康报告</a></li>
+            <li><a href="/check">查看反馈</a></li>
+        </ul>
+        <!--        老人侧栏-->
+        <ul data-role="listview" data-inset="true" th:if="${user.getType()==3}">
+            <li><a href="/bind/hugong">绑定护工</a></li>
+            <li><a href="/feedback">提交反馈</a></li>
+        </ul>
 
+    </div>
     <div data-role="content">
-
-
-        <div align="center">
-            <div class="panel panel-default"><!-- 后传前-养老院信息模块 -->
-                <div class="media" th:each="manager : ${managers}">
+        <div align="center" th:switch="${session.user.getType()}">
+            <div class="panel panel-default" th:case="1"><!-- 后传前-养老院信息模块 -->
                 <img src="/images/yuanfang_demo.jpg" height="220" alt=""/>
-                    <div class="panel-heading">
-                        <h3 class="panel-title h3" th:text="${manager.name}"></h3>
-                    </div>
-                    <div class="panel-body" th:text="${manager.address}"> 地点：上海市静安区145号</div>
-                    <div class="panel-footer" th:text="${manager.telephone}">&nbsp;联系方式：188176044833</div>
+                <div class="">
+                    <h3 class="panel-title h3" th:text="${manager.getName()}">养老院名称</h3>
                 </div>
+                <div class="" th:text="|地点：${manager.getAddress()}|"> 地点：上海市静安区145号</div>
+                <div class="" th:text="|联系方式：${manager.getTelephone()}|">联系方式：188176044833</div>
             </div>
-            <div class="panel panel-default"><!-- 后传前-护工信息模块 -->
+            <div class="panel panel-default" th:case="2"><!-- 后传前-护工信息模块 -->
                 <img src="/images/hugong_demo.png" height="220" alt=""/>
-                <div class="panel-heading">
-                    <h3 class="panel-title h3">护工姓名</h3>
+                <div class="">
+                    <h3 class="panel-title h3" th:text="${nurse.getName()}">护工姓名</h3>
                 </div>
-                <div class="panel-footer">&nbsp;所在护理院：</div>
-                <div class="panel-footer">&nbsp;工龄：</div>
-                <div class="panel-footer">&nbsp;联系方式：</div>
+                <div class="" th:text="|所在护理院：${manager.getName()}|"> 所在护理院：上海养老院</div>
+                <div class="" th:text="|工龄：${nurse.getWorkAge()}|">工龄：13</div>
+                <div class="" th:text="|联系方式：${nurse.getTelephone()}|">联系方式：188176044833</div>
             </div>
-            <div class="panel panel-default"><!-- 后传前-老人信息模块 -->
+            <div class="panel panel-default" th:case="3"><!-- 后传前-老人信息模块 -->
                 <img src="/images/laoren_demo.jpg" height="220" alt=""/>
-                <div class="panel-heading">
-                    <h3 class="panel-title h3">老人姓名</h3>
+                <div class="">
+                    <h3 class="panel-title h3" th:text="${elder.getName()}">老人姓名</h3>
                 </div>
-                <div class="panel-body"> 年龄：</div>
-                <div class="panel-footer">&nbsp;所在护理院：</div>
-                <div class="panel-footer">&nbsp;护工：</div>
+                <div class="" th:text="|年龄：${elder.getAge()}|">年龄：63</div>
+                <div class="" th:text="|负责护工：${nurse.getName()}|">负责护工：张三</div>
+                <div class="" th:text="|所在护理院：${manager.getName()}|"> 所在护理院：上海养老院</div>
             </div>
             <a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-grid ui-btn-icon-right">编辑修改</a>
             <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
                 <!--如果user的type==1显示以下信息-->
-                <li class="dropdown" th:if="${session.user.type==1}">
-                    <form method="post" action="/edit.manager"><!-- 前传后-编辑院方信息action -->
-                        <!--                hidden表示不会在页面显示但是会传数据到后台-->
-                        <input type="hidden" name="id" th:value="${session.user.getId()}">
-                        <div>
-                            <h3>院方信息</h3>
-                            <label for="yuanfang_name" class="ui-hidden-accessible">院名</label>
-                            <input type="text" name="name" id="yuanfang_name" placeholder="请输入护理院的全称">
-                            <label for="yuanfang_telephone" class="ui-hidden-accessible">联系方式</label>
-                            <input type="text" name="telephone" id="yuanfang_telephone" placeholder="请输入护理院的联系电话">
-                            <label for="yuanfang_address" class="ui-hidden-accessible">地址</label>
-                            <input type="text" name="address" id="yuanfang_address" placeholder="请输入护理院的所在地址">
-                            <input type="submit" data-inline="true" value="提交">
-                        </div>
-                    </form>
-                </li>
-                <form method="post" action="/edit.nurse"><!-- 前传后-编辑护工信息action -->
+                <form method="post" th:if="${session.user.type==1}" action="/edit.manager"><!-- 前传后-编辑院方信息action -->
+                    <!--                hidden表示不会在页面显示但是会传数据到后台-->
+                    <input type="hidden" name="id" th:value="${session.user.getId()}">
+                    <div>
+                        <h3>院方信息</h3>
+                        <label for="yuanfang_name" class="ui-hidden-accessible">院名</label>
+                        <input type="text" name="name" id="yuanfang_name" placeholder="请输入护理院的全称">
+                        <label for="yuanfang_telephone" class="ui-hidden-accessible">联系方式</label>
+                        <input type="text" name="telephone" id="yuanfang_telephone" placeholder="请输入护理院的联系电话">
+                        <label for="yuanfang_address" class="ui-hidden-accessible">地址</label>
+                        <input type="text" name="address" id="yuanfang_address" placeholder="请输入护理院的所在地址">
+                        <input type="submit" data-inline="true" value="提交">
+                    </div>
+                </form>
+                <form method="post" th:if="${session.user.type==2}" action="/edit.nurse"><!-- 前传后-编辑护工信息action -->
                     <input type="hidden" name="id" th:value="${session.user.getId()}">
                     <div>
                         <h3>护工信息</h3>
@@ -87,7 +105,7 @@
                         <input type="submit" data-inline="true" value="提交">
                     </div>
                 </form>
-                <form method="post" action="/edit.elder"><!-- 前传后-编辑老人信息action -->
+                <form method="post" th:if="${session.user.type==3}" action="/edit.elder"><!-- 前传后-编辑老人信息action -->
                     <input type="hidden" name="id" th:value="${session.user.getId()}">
                     <div>
                         <h3>老人信息</h3>
@@ -99,31 +117,18 @@
                     </div>
                 </form>
             </div>
-
         </div>
-
-
         <div><!-- 后传前-公告模块 -->
             <h3>&nbsp;</h3>
             <h3 align="center">公告栏</h3>
-            <ul data-role="listview" data-inset="true">
+            <ul data-role="listview" data-inset="true" th:each="announcement:${announcements}">
                 <li>
-                    <a href="#">
-                        <h3>热烈欢迎来自育才高中的志愿者</h3>
+                    <a>
+                        <h3 th:text="${announcement.getTitle()}">热烈欢迎来自育才高中的志愿者</h3>
 
-                        <p class="topic"><strong>2020.3.15 15:30</strong></p>
-                        <p>
+                        <p class="topic"><strong th:text="${announcement.getTime()}">2020.3.15 15:30</strong></p>
+                        <p th:text="${announcement.getContent()}">
                             福龄金太阳养老基金会计划用墙绘艺术美化长辈生活的家园，用艺术类活动活跃他们，帮助他们建立健康的生活方式，在参与中让长辈感受关爱，增强他们彼此间的关系，丰富他们的晚年生活!有意向的志愿者请与我们联系，只要您一个电话，剩下的我们来做！</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h3>EldCare正式上线</h3>
-
-                        <p class="topic"><strong>2020.2.22 11:36</strong></p>
-                        <p>
-                            养老院辅助管理应用EldCare正式上线！从今天起我院开始使用EldCare作为辅助管理工具，请各位家属与护员下载此App，一起为长辈维护一个健康的生活环境！
-                        </p>
                     </a>
                 </li>
             </ul>
