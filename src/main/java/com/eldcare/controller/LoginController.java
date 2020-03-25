@@ -45,7 +45,8 @@ public class LoginController {
             user.setToken(token);
             userService.Update(user);
             // 写cookie和session
-            CookieUtils.set(response, CookieUtils.TOKEN,token,-1);
+            response.addCookie(new Cookie("token", token));
+//            CookieUtils.set(response, CookieUtils.TOKEN,token,-1);
             return "redirect:/home";
         } else {
             //登录失败

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,7 +19,8 @@
         <h1>提交反馈</h1>
     </div>
     <div data-role="content">
-        <form method="post" action="">
+        <form method="post" action="/feedback">
+            <input type="hidden" name="elder" th:value="${session.user.getId()}">
             <br/>
 <!--            后传前-护工姓名-->
             <label>护工：</label>
@@ -37,7 +38,7 @@
 
             <div data-role="fieldcontain">
                 <label for="xiangxineirong">详细内容</label>
-                <input type="text" name="xiangxineirong" id="xiangxineirong" value="" style="height: 52px;"/>
+                <input type="text" name="content" id="xiangxineirong" value="" style="height: 52px;"/>
             </div>
 
 

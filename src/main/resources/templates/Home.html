@@ -28,12 +28,14 @@
 
         <div align="center">
             <div class="panel panel-default"><!-- 后传前-养老院信息模块 -->
+                <div class="media" th:each="manager : ${managers}">
                 <img src="/images/yuanfang_demo.jpg" height="220" alt=""/>
-                <div class="panel-heading">
-                    <h3 class="panel-title h3">养老院名称</h3>
+                    <div class="panel-heading">
+                        <h3 class="panel-title h3" th:text="${manager.name}"></h3>
+                    </div>
+                    <div class="panel-body" th:text="${manager.address}"> 地点：上海市静安区145号</div>
+                    <div class="panel-footer" th:text="${manager.telephone}">&nbsp;联系方式：188176044833</div>
                 </div>
-                <div class="panel-body"> 地点：上海市静安区145号</div>
-                <div class="panel-footer">&nbsp;联系方式：188176044833</div>
             </div>
             <div class="panel panel-default"><!-- 后传前-护工信息模块 -->
                 <img src="/images/hugong_demo.png" height="220" alt=""/>
@@ -55,19 +57,25 @@
             </div>
             <a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-grid ui-btn-icon-right">编辑修改</a>
             <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-                <form method="post" action="yuanfang.edit.do"><!-- 前传后-编辑院方信息action -->
-                    <div>
-                        <h3>院方信息</h3>
-                        <label for="yuanfang_name" class="ui-hidden-accessible">院名</label>
-                        <input type="text" name="name" id="yuanfang_name" placeholder="请输入护理院的全称">
-                        <label for="yuanfang_telephone" class="ui-hidden-accessible">联系方式</label>
-                        <input type="text" name="telephone" id="yuanfang_telephone" placeholder="请输入护理院的联系电话">
-                        <label for="yuanfang_address" class="ui-hidden-accessible">地址</label>
-                        <input type="text" name="address" id="yuanfang_address" placeholder="请输入护理院的所在地址">
-                        <input type="submit" data-inline="true" value="提交">
-                    </div>
-                </form>
-                <form method="post" action="hugong.edit.do"><!-- 前传后-编辑护工信息action -->
+                <!--如果user的type==1显示以下信息-->
+                <li class="dropdown" th:if="${session.user.type==1}">
+                    <form method="post" action="/edit.manager"><!-- 前传后-编辑院方信息action -->
+                        <!--                hidden表示不会在页面显示但是会传数据到后台-->
+                        <input type="hidden" name="id" th:value="${session.user.getId()}">
+                        <div>
+                            <h3>院方信息</h3>
+                            <label for="yuanfang_name" class="ui-hidden-accessible">院名</label>
+                            <input type="text" name="name" id="yuanfang_name" placeholder="请输入护理院的全称">
+                            <label for="yuanfang_telephone" class="ui-hidden-accessible">联系方式</label>
+                            <input type="text" name="telephone" id="yuanfang_telephone" placeholder="请输入护理院的联系电话">
+                            <label for="yuanfang_address" class="ui-hidden-accessible">地址</label>
+                            <input type="text" name="address" id="yuanfang_address" placeholder="请输入护理院的所在地址">
+                            <input type="submit" data-inline="true" value="提交">
+                        </div>
+                    </form>
+                </li>
+                <form method="post" action="/edit.nurse"><!-- 前传后-编辑护工信息action -->
+                    <input type="hidden" name="id" th:value="${session.user.getId()}">
                     <div>
                         <h3>护工信息</h3>
                         <label for="hugong_name" class="ui-hidden-accessible">名字</label>
@@ -75,11 +83,12 @@
                         <label for="hugong_telephone" class="ui-hidden-accessible">联系方式</label>
                         <input type="text" name="telephone" id="hugong_telephone" placeholder="请输入您的电话号码">
                         <label for="hugong_workage" class="ui-hidden-accessible">工龄</label>
-                        <input type="text" name="workage" id="hugong_workage" placeholder="请输入您的工龄">
+                        <input type="text" name="workAge" id="hugong_workage" placeholder="请输入您的工龄">
                         <input type="submit" data-inline="true" value="提交">
                     </div>
                 </form>
-                <form method="post" action="laoren.edit.do"><!-- 前传后-编辑老人信息action -->
+                <form method="post" action="/edit.elder"><!-- 前传后-编辑老人信息action -->
+                    <input type="hidden" name="id" th:value="${session.user.getId()}">
                     <div>
                         <h3>老人信息</h3>
                         <label for="laoren_name" class="ui-hidden-accessible">姓名</label>
