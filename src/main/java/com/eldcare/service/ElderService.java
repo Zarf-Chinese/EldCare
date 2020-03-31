@@ -22,7 +22,11 @@ public class ElderService {
 
     public void create(Elder elder){
         elder.setGmtModified(nowTime);
-        elderMapper.insert(elder);
+        if(elderMapper.selectByPrimaryKey(elder.getId())!=null){
+            elderMapper.updateByPrimaryKey(elder);
+        }else{
+            elderMapper.insert(elder);
+        }
     }
     public List<Elder> list() {
         return elderMapper.selectAll();
@@ -34,7 +38,7 @@ public class ElderService {
 
     public List<Elder> listByIn(Integer id) {
         ElderExample elderExample=new ElderExample();
-        elderExample.createCriteria().andInEqualTo(id);
+        elderExample.createCriteria().andBidEqualTo(id);
         return elderMapper.selectByExample(elderExample);
     }
 

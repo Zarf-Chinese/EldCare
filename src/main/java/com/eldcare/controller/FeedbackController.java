@@ -32,7 +32,8 @@ public class FeedbackController {
     public String feed(Model model) {
         User currentUser= BaseUtils.instance.getCurrentUser();
         Elder elder=elderService.selectById(currentUser.getId());
-        Nurse nurse = nurseService.selectById(elder.getIn());
+        Nurse nurse = nurseService.selectById(elder.getBid());
+        //fixme 检查：是否存在nurse
         model.addAttribute("nurse",nurse);
         return "/Feedback";
     }
@@ -43,12 +44,12 @@ public class FeedbackController {
         User currentUser= BaseUtils.instance.getCurrentUser();
         Elder elder=elderService.selectById(currentUser.getId());
         Feedback feedback=new Feedback();
-        feedback.setNurse(elder.getIn());
+        feedback.setNurse(elder.getBid());
         feedback.setElder(currentUser.getId());
         feedback.setScore(score);
         feedback.setContent(content);
         feedback.setIsAnon(niming);
         feedbackService.create(feedback);
-        return "redirect:/Home";
+        return "redirect:/home";
     }
 }

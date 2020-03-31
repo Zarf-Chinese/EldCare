@@ -20,13 +20,13 @@
     </div>
 
     <div data-role="content">
-        <form method="post" action="/health"> <!--action（未编辑）为表单提交到数据库-->
+        <form method="post" action="/healthUpdate"> <!--action（未编辑）为表单提交到数据库-->
             <div class="ui-grid-b">
                 <div class="ui-block-a">
                     <label for="laoren">选择老人</label>
 <!--                    后传前：老人列表-->
-                    <select name="elder" id="laoren" th:each="elder:${elders}">
-                        <option th:value="${elder.getIndex()}" th:text="elder.getName()">laoren1</option>
+                    <select name="elderIndex" id="laoren" th:each="elder:${elders}">
+                        <option th:value="${elder.getId()}" th:text="${elder.getName()}">laoren1</option>
                     </select>
                 </div>
                 <div class="ui-block-b"></div>
@@ -52,6 +52,7 @@
             &nbsp;&nbsp;
             <div data-role="fieldcontain">
                 <label>汇报人：</label>
+                <label th:text="${nurse.getName()}"></label>
             </div>  <!--       汇报人输入-->
             <input type="submit" value="提交" data-icon="star" data-iconpos="left"/>
         </form>

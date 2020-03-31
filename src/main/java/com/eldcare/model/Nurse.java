@@ -3,19 +3,19 @@ package com.eldcare.model;
 public class Nurse {
     private Integer id;
 
-    private Integer in;
+    private Integer bid =-1;
 
-    private String name;
+    private String name="待填写";
 
-    private String telephone;
+    private String telephone="待填写";
 
-    private Integer workAge;
+    private Integer workAge=0;
 
     private Long gmtModified;
 
-    public Nurse(Integer id, Integer in, String name, String telephone, Integer workAge, Long gmtModified) {
+    public Nurse(Integer id, Integer bid, String name, String telephone, Integer workAge, Long gmtModified) {
         this.id = id;
-        this.in = in;
+        this.bid = bid;
         this.name = name;
         this.telephone = telephone;
         this.workAge = workAge;
@@ -34,12 +34,12 @@ public class Nurse {
         this.id = id;
     }
 
-    public Integer getIn() {
-        return in;
+    public Integer getBid() {
+        return bid;
     }
 
-    public void setIn(Integer in) {
-        this.in = in;
+    public void setBid(Integer bid) {
+        this.bid = bid;
     }
 
     public String getName() {

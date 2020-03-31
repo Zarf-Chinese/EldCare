@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public class FeedbackService {
         FeedbackExample feedbackExample=new FeedbackExample();
         feedbackExample.createCriteria().andNurseEqualTo(id);
         List<Feedback> feedbacks=feedbackMapper.selectByExample(feedbackExample);
-        List<Feedback> notChecked=null;
+        List<Feedback> notChecked=new ArrayList<>();
         for(Feedback feedback:feedbacks){
             if(!feedback.getIsChecked())
                 notChecked.add(feedback);

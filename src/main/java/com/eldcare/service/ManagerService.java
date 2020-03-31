@@ -24,7 +24,11 @@ public class ManagerService {
 
     public void create(Manager manager){
         manager.setGmtModified(nowTime);
-        managerMapper.insert(manager);
+        if(managerMapper.selectByPrimaryKey(manager.getId())!=null){
+            managerMapper.updateByPrimaryKey(manager);
+        }else{
+            managerMapper.insert(manager);
+        }
     }
 
     //展示个人信息

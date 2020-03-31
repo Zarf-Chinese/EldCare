@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -25,42 +27,47 @@ public class SearchController {
     private NurseService nurseService;
     @Autowired
     private ElderService elderService;
-    @GetMapping("/search")
+    @GetMapping("/search/{action}")
     public String search(Model model,
-                         @RequestParam(name = "search", required = false) String search){
+                         @PathVariable("action") int action,
+                         @RequestParam(name = "criteria", required = false) String criteria){
         User currentUser = BaseUtils.instance.getCurrentUser();
         int id=currentUser.getId();
         int type=currentUser.getType();
-        //护工
-        if(type==2) {
-           List<Manager> managers=managerService.list(search);
+        //护工找养老院
+        if(action==1) {
+           List<Manager> managers=managerService.list(criteria);
            model.addAttribute("managers",managers);
+           model.addAttribute("action",action);
+           model.addAttribute("criteria",criteria);
         }
-        //老人
-        if(type==3){
-            List<Nurse> nurses=nurseService.list(search);
+        //老人找护工
+        if(action==2){
+            List<Nurse> nurses=nurseService.list(criteria);
             model.addAttribute("nurses",nurses);
+            model.addAttribute("action",action);
+            model.addAttribute("criteria",criteria);
         }
         return "/Search";
     }
     //护工绑定养老院
-    @GetMapping("/bind.manager")
-    public String bindM(@RequestParam(name = "id") int id) {
+    @GetMapping("/bind.manager/{id}")
+    public String bindM(@PathVariable(name = "id") int id) {
         User currentUser = BaseUtils.instance.getCurrentUser();
         Nurse nurse = nurseService.selectById(currentUser.getId());
-        nurse.setIn(id);
+        nurse.setBid(id);
         nurseService.update(nurse);
-        return "/Search";
+        return "redirect:/home";
     }
 
     //老人绑定护工
-    @GetMapping("/bind.nurse")
-    public String bindN(@RequestParam(name = "id") int id) {
+    @GetMapping("/bind.nurse/{id}")
+    public String bindN(@PathVariable(name = "id") int id) {
         User currentUser = BaseUtils.instance.getCurrentUser();
         Elder elder = elderService.selectById(currentUser.getId());
-        elder.setIn(id);
+        elder.setBid(id);
         elderService.update(elder);
-        return "/Search";
+        return "redirect:/home";
     }
 
 }

@@ -32,7 +32,7 @@ public class CheckController {
         model.addAttribute("feedbacks",feedbacks);
         return "/Check";
     }
-    @PostMapping("/check/{id}")
+    @GetMapping("/check/{id}")
     public String fbCheck(@PathVariable(name="id")int id){
         feedbackService.check(id);
         return "/Check";

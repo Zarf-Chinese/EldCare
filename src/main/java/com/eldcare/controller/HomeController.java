@@ -7,13 +7,10 @@ import com.eldcare.service.ManagerService;
 import com.eldcare.service.NurseService;
 import com.eldcare.utils.BaseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -49,27 +46,33 @@ public class HomeController {
             Manager manager = managerService.selectById(id);
             model.addAttribute("manager", manager);
             List<Broadcast> broadcasts = broadcastService.listByCreator(id);
-            model.addAttribute("broadcast", broadcasts);
+            model.addAttribute("broadcasts", broadcasts);
         }
         //护工
         if(type==2) {
             Nurse nurse = nurseService.selectById(id);
             model.addAttribute("nurse",nurse);
-            Manager manager=managerService.selectById(nurse.getIn());
-            model.addAttribute("manager", manager);
-            List<Broadcast> broadcasts=broadcastService.listForNurse(nurse.getIn());
-            model.addAttribute("broadcasts",broadcasts);
+            Manager manager=managerService.selectById(nurse.getBid());
+            if(manager!=null){
+                model.addAttribute("manager", manager);
+                List<Broadcast> broadcasts=broadcastService.listForNurse(nurse.getBid());
+                model.addAttribute("broadcasts",broadcasts);
+            }
         }
         //老人
         if(type==3){
             Elder elder=elderService.selectById(id);
             model.addAttribute("elder",elder);
-            Nurse nurse = nurseService.selectById(elder.getIn());
-            model.addAttribute("nurse",nurse);
-            Manager manager=managerService.selectById(nurse.getIn());
-            model.addAttribute("manager", manager);
-            List<Broadcast> broadcasts=broadcastService.listForElder(nurse.getIn());
-            model.addAttribute("broadcasts",broadcasts);
+            Nurse nurse = nurseService.selectById(elder.getBid());
+            if(nurse!=null){
+                model.addAttribute("nurse",nurse);
+                Manager manager=managerService.selectById(nurse.getBid());
+                if(manager!=null){
+                    model.addAttribute("manager", manager);
+                    List<Broadcast> broadcasts=broadcastService.listForElder(nurse.getBid());
+                    model.addAttribute("broadcasts",broadcasts);
+                }
+            }
         }
         model.addAttribute("user",currentUser);
         return "/Home";

@@ -15,6 +15,12 @@ import java.util.List;
 @Service
 public class UserService {
     @Resource
+    private ManagerService managerService;
+    @Resource
+    private NurseService nurseService;
+    @Resource
+    private ElderService elderService;
+    @Resource
     private UserMapper userMapper;
     public boolean hasIdentity(User user){
         int type=user.getType();
@@ -47,7 +53,26 @@ public class UserService {
         user.setGmtModified(nowTime);
         userMapper.insert(user);
     }
-
+    public void initAsType(User user,int type){
+        if(type==1){
+            //作为院方初始化
+            Manager manager=new Manager();
+            manager.setId(user.getId());
+            managerService.create(manager);
+        }
+        else if(type==2){
+            //作为护工初始化
+            Nurse nurse=new Nurse();
+            nurse.setId(user.getId());
+            nurseService.create(nurse);
+        }else if(type==3){
+            //作为护工初始化
+            Elder elder=new Elder();
+            elder.setId(user.getId());
+            elderService.create(elder);
+        }
+        user.setType(type);
+    }
     //重新登录时
     public void Update(User user) {
         User dbUser=userMapper.selectByPrimaryKey(user.getName());

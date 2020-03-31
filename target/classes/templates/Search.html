@@ -25,21 +25,22 @@
 
         <div class="ui-content">
 
-            <a href="#search" data-rel="popup" class="ui-btn ui-icon-search ui-btn-icon-right">护工搜索</a>
+            <a href="#search" data-rel="popup" class="ui-btn ui-icon-search ui-btn-icon-right" th:if="${action==1}">院方搜索</a>
+            <a href="#search" data-rel="popup" class="ui-btn ui-icon-search ui-btn-icon-right" th:if="${action==2}">护工搜索</a>
             <div data-role="popup" id="search" class="ui-content" style="min-width:250px;">
-                <form method="post" th:if="${action==1}" action="/search/manager">
+                <form method="post" th:if="${action==1}" action="/search/1">
                     <div>
                         <h3 >院方搜索</h3>
-                        <label for="criteria" class="ui-hidden-accessible">搜索条件</label>
-                        <input type="text" name="criteria" id="criteria" th:value="${criteria}">
+                        <label for="criteriaM" class="ui-hidden-accessible">搜索条件</label>
+                        <input type="text" name="criteria" id="criteriaM" th:value="${criteria}">
                         <input type="submit" data-inline="true" value="搜索">
                     </div>
                 </form>
-                <form method="post" th:if="${action==2}" action="/search/nurse">
+                <form method="post" th:if="${action==2}" action="/search/2">
                     <div>
                         <h3 >护工搜索</h3>
-                        <label for="criteria" class="ui-hidden-accessible">搜索条件</label>
-                        <input type="text" name="criteria" id="criteria" th:value="${criteria}">
+                        <label for="criteriaN" class="ui-hidden-accessible">搜索条件</label>
+                        <input type="text" name="criteria" id="criteriaN" th:value="${criteria}">
                         <input type="submit" data-inline="true" value="搜索">
                     </div>
                 </form>
@@ -50,20 +51,20 @@
             <!--            院方列表-->
             <ul data-role="listview" data-inset="true" th:case="1" th:each="manager:${managers}">
                 <li>
-                    <a th:href="|/bind/manager/${manager.getId()}|">
-                        <h3 th:text="|院方${manager.count}|">院方1</h3>
+                    <a th:href="|/bind.manager/${manager.getId()}|">
+                        <h3 th:text="|院方${managerStat.count}|">院方1</h3>
                         <p class="topic"><strong th:text="${manager.getName()}">上海养老院</strong></p>
-                        <p th:text="|地址：${manager.getAddress()}|">地址：</p>
+                        <p th:text="|地址: ${manager.getAddress()}|">地址：</p>
                     </a>
                 </li>
             </ul>
             <!--            护工列表-->
             <ul data-role="listview" data-inset="true" th:case="2" th:each="nurse:${nurses}">
                 <li>
-                    <a th:href="|/bind/nurse/${nurse.getId()}|">
+                    <a th:href="|/bind.nurse/${nurse.getId()}|">
                         <h3 th:text="|护员${nurseStat.count}|">护员1</h3>
                         <p class="topic"><strong th:text="${nurse.getName()}">张老林</strong></p>
-                        <p th:text="|工龄：${nurse.getWorkAge()}|">工龄：</p>
+                        <p th:text="|工龄: ${nurse.getWorkAge()}|">工龄：</p>
                     </a>
                 </li>
             </ul>

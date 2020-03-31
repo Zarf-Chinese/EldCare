@@ -13,9 +13,9 @@ public class Feedback {
 
     private Long gmtCreate;
 
-    private Boolean isAnon;
+    private Boolean isAnon=false;
 
-    private Boolean isChecked;
+    private Boolean isChecked=false;
 
     private Long checkTime;
 

@@ -164,63 +164,63 @@ public class ElderExample {
             return (Criteria) this;
         }
 
-        public Criteria andInIsNull() {
-            addCriterion("IN is null");
+        public Criteria andBidIsNull() {
+            addCriterion("BID is null");
             return (Criteria) this;
         }
 
-        public Criteria andInIsNotNull() {
-            addCriterion("IN is not null");
+        public Criteria andBidIsNotNull() {
+            addCriterion("BID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andInEqualTo(Integer value) {
-            addCriterion("IN =", value, "in");
+        public Criteria andBidEqualTo(Integer value) {
+            addCriterion("BID =", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInNotEqualTo(Integer value) {
-            addCriterion("IN <>", value, "in");
+        public Criteria andBidNotEqualTo(Integer value) {
+            addCriterion("BID <>", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInGreaterThan(Integer value) {
-            addCriterion("IN >", value, "in");
+        public Criteria andBidGreaterThan(Integer value) {
+            addCriterion("BID >", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInGreaterThanOrEqualTo(Integer value) {
-            addCriterion("IN >=", value, "in");
+        public Criteria andBidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("BID >=", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInLessThan(Integer value) {
-            addCriterion("IN <", value, "in");
+        public Criteria andBidLessThan(Integer value) {
+            addCriterion("BID <", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInLessThanOrEqualTo(Integer value) {
-            addCriterion("IN <=", value, "in");
+        public Criteria andBidLessThanOrEqualTo(Integer value) {
+            addCriterion("BID <=", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInIn(List<Integer> values) {
-            addCriterion("IN in", values, "in");
+        public Criteria andBidIn(List<Integer> values) {
+            addCriterion("BID in", values, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInNotIn(List<Integer> values) {
-            addCriterion("IN not in", values, "in");
+        public Criteria andBidNotIn(List<Integer> values) {
+            addCriterion("BID not in", values, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInBetween(Integer value1, Integer value2) {
-            addCriterion("IN between", value1, value2, "in");
+        public Criteria andBidBetween(Integer value1, Integer value2) {
+            addCriterion("BID between", value1, value2, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andInNotBetween(Integer value1, Integer value2) {
-            addCriterion("IN not between", value1, value2, "in");
+        public Criteria andBidNotBetween(Integer value1, Integer value2) {
+            addCriterion("BID not between", value1, value2, "bid");
             return (Criteria) this;
         }
 

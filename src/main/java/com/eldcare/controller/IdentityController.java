@@ -38,11 +38,11 @@ public class IdentityController {
         if(currentUser==null){
             System.out.print("尚未登录");
             //如果尚未登录
-            return "redirect:/Login";
+            return "redirect:/login";
         }
         //设置用户类型
-        currentUser.setType(identityType);
+        userService.initAsType(currentUser,identityType);
         userService.Update(currentUser);
-        return "redirect:/Home";
+        return "redirect:/home";
     }
 }

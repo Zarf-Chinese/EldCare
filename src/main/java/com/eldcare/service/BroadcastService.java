@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -44,7 +45,7 @@ public class BroadcastService {
     //某个养老院展示给护工的公告
     public List<Broadcast> listForNurse(int id){
         List<Broadcast> broadcasts=broadcastService.listByCreator(id);
-        List<Broadcast> bforNurse = null;
+        List<Broadcast> bforNurse = new ArrayList<>();
         for(Broadcast broadcast:broadcasts){
             if(broadcast.getType()==2||broadcast.getType()==3)
                 bforNurse.add(broadcast);
@@ -54,7 +55,7 @@ public class BroadcastService {
     //给老人
     public List<Broadcast> listForElder(int id) {
         List<Broadcast> broadcasts=broadcastService.listByCreator(id);
-        List<Broadcast> bforElder = null;
+        List<Broadcast> bforElder = new ArrayList<>();
         for(Broadcast broadcast:broadcasts){
             if(broadcast.getType()==1||broadcast.getType()==3)
                 bforElder.add(broadcast);

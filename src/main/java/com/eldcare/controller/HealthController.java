@@ -6,6 +6,7 @@ import com.eldcare.service.HealthService;
 import com.eldcare.service.NurseService;
 import com.eldcare.utils.BaseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import java.util.List;
  * @Author ShiQi
  * @Date 2020/03/24 23:36
  */
-@ControllerAdvice
+@Controller
 public class HealthController {
     @Resource
     private HealthService healthService;
@@ -34,21 +35,21 @@ public class HealthController {
         //只有护工可以访问的界面
         Nurse nurse = nurseService.selectById(currentUser.getId());
         model.addAttribute("nurse",nurse);
-        List<Elder> elders=elderService.listByIn(currentUser.getId());
+        List<Elder> elders=elderService.listByIn(nurse.getId());
         model.addAttribute("elders",elders);
         return "/HealthUpdate";
     }
     @PostMapping("/healthUpdate")
     public String healthUpdate(@RequestParam(name="elderIndex")int elderIndex,
                            @RequestParam(name="content")String content,
-                           @RequestParam(name="isAbnormal")Boolean isAbnormal){
+                           @RequestParam(name="isAbnormal",required = false)Boolean isAbnormal){
         User currentUser= BaseUtils.instance.getCurrentUser();
         Health health=new Health();
         health.setNurse(currentUser.getId());
         health.setElder(elderIndex);
         health.setContent(content);
-        health.setIsAbnormal(isAbnormal);
+        health.setIsAbnormal(isAbnormal!=null);
         healthService.create(health);
-        return "redirect:/HealthUpdate";
+        return "redirect:/health";
     }
 }

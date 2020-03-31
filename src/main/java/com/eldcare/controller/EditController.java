@@ -31,7 +31,9 @@ public class EditController {
                           @RequestParam(name = "name") String name,
                           @RequestParam(name = "telephone") String telephone,
                           @RequestParam(name = "address") String address) {
-        Manager manager = new Manager();
+        Manager manager;
+        manager=managerService.selectById(id);
+        if(manager==null)manager= new Manager();
         manager.setId(id);
         manager.setName(name);
         manager.setTelephone(telephone);
@@ -44,7 +46,9 @@ public class EditController {
                         @RequestParam(name = "name") String name,
                         @RequestParam(name = "telephone") String telephone,
                         @RequestParam(name = "workAge") int workAge){
-        Nurse nurse=new Nurse();
+        Nurse nurse;
+        nurse=nurseService.selectById(id);
+        if(nurse==null)nurse=new Nurse();
         nurse.setId(id);
         nurse.setName(name);
         nurse.setTelephone(telephone);
@@ -56,7 +60,9 @@ public class EditController {
     public String elder(@RequestParam(name = "id") int id,
                         @RequestParam(name = "name") String name,
                         @RequestParam(name = "age") int age){
-        Elder elder=new Elder();
+        Elder elder;
+        elder=elderService.selectById(id);
+        if(elder==null)elder=new Elder();
         elder.setId(id);
         elder.setName(name);
         elder.setAge(age);

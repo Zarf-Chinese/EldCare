@@ -23,7 +23,11 @@ public class NurseService {
 
     public void create(Nurse nurse){
         nurse.setGmtModified(nowTime);
-        nurseMapper.insert(nurse);
+        if(nurseMapper.selectByPrimaryKey(nurse.getId())!=null){
+            nurseMapper.updateByPrimaryKey(nurse);
+        }else{
+            nurseMapper.insert(nurse);
+        }
     }
     public List<Nurse> list(String search) {
         //查找：

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.eldcare.model.Nurse">
     <constructor>
       <idArg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="IN" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="BID" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="TELEPHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="WORK_AGE" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, IN, NAME, TELEPHONE, WORK_AGE, GMT_MODIFIED
+    ID, BID, NAME, TELEPHONE, WORK_AGE, GMT_MODIFIED
   </sql>
   <select id="selectByExample" parameterType="com.eldcare.model.NurseExample" resultMap="BaseResultMap">
     select
@@ -103,12 +103,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.eldcare.model.Nurse">
-    insert into nurse (ID, IN, NAME, 
-      TELEPHONE, WORK_AGE, GMT_MODIFIED
-      )
-    values (#{id,jdbcType=INTEGER}, #{in,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=VARCHAR}, #{workAge,jdbcType=INTEGER}, #{gmtModified,jdbcType=BIGINT}
-      )
+    insert into nurse (ID, BID, NAME,
+      TELEPHONE, WORK_AGE, GMT_MODIFIED)
+    values (#{id,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+      #{telephone,jdbcType=VARCHAR}, #{workAge,jdbcType=INTEGER}, #{gmtModified,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.eldcare.model.Nurse">
     insert into nurse
@@ -116,8 +114,8 @@
       <if test="id != null">
         ID,
       </if>
-      <if test="in != null">
-        IN,
+      <if test="bid != null">
+        BID,
       </if>
       <if test="name != null">
         NAME,
@@ -136,8 +134,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="in != null">
-        #{in,jdbcType=INTEGER},
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -165,8 +163,8 @@
       <if test="record.id != null">
         ID = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.in != null">
-        IN = #{record.in,jdbcType=INTEGER},
+      <if test="record.bid != null">
+        BID = #{record.bid,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         NAME = #{record.name,jdbcType=VARCHAR},
@@ -188,7 +186,7 @@
   <update id="updateByExample" parameterType="map">
     update nurse
     set ID = #{record.id,jdbcType=INTEGER},
-      IN = #{record.in,jdbcType=INTEGER},
+      BID = #{record.bid,jdbcType=INTEGER},
       NAME = #{record.name,jdbcType=VARCHAR},
       TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
       WORK_AGE = #{record.workAge,jdbcType=INTEGER},
@@ -200,8 +198,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.eldcare.model.Nurse">
     update nurse
     <set>
-      <if test="in != null">
-        IN = #{in,jdbcType=INTEGER},
+      <if test="bid != null">
+        BID = #{bid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         NAME = #{name,jdbcType=VARCHAR},
@@ -220,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.eldcare.model.Nurse">
     update nurse
-    set IN = #{in,jdbcType=INTEGER},
+    set BID = #{bid,jdbcType=INTEGER},
       NAME = #{name,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=VARCHAR},
       WORK_AGE = #{workAge,jdbcType=INTEGER},

@@ -3,17 +3,17 @@ package com.eldcare.model;
 public class Elder {
     private Integer id;
 
-    private Integer in;
+    private Integer bid =-1;
 
-    private String name;
+    private String name="待填写";
 
-    private Integer age;
+    private Integer age=0;
 
     private Long gmtModified;
 
-    public Elder(Integer id, Integer in, String name, Integer age, Long gmtModified) {
+    public Elder(Integer id, Integer bid, String name, Integer age, Long gmtModified) {
         this.id = id;
-        this.in = in;
+        this.bid = bid;
         this.name = name;
         this.age = age;
         this.gmtModified = gmtModified;
@@ -31,12 +31,12 @@ public class Elder {
         this.id = id;
     }
 
-    public Integer getIn() {
-        return in;
+    public Integer getBid() {
+        return bid;
     }
 
-    public void setIn(Integer in) {
-        this.in = in;
+    public void setBid(Integer bid) {
+        this.bid = bid;
     }
 
     public String getName() {

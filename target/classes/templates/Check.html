@@ -27,10 +27,10 @@
                 <li>
                     <a th:href="|/check/${feedback.id}|">
                         <h3 th:text="|反馈${feedbackStat.count}|">反馈1</h3>
-                        <p class="topic"><strong th:text="${feedback.getTime()}">2020.03.04</strong></p>
 						<br/>
-                        <p th:if="!${feedback.getIsAnon()}" th:text="|反馈人：${feedback.getElder()}|">反馈人：张老林</p>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        <p th:if="${!feedback.getIsAnon()}" th:text="|反馈人: ${feedback.getElder()}|">反馈人：张老林</p>
+                        <p th:if="${feedback.getIsAnon()}">反馈人：匿名</p>
+                        <p th:text="${feedback.getContent()}">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
                     </a>
                 </li>
             </ul>
